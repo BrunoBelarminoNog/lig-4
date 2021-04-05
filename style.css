@@ -1,0 +1,78 @@
+/*
+--------------------------------------------
+ESTRUTURAÇÃO BASE
+--------------------------------------------
+**** DECLARAÇÃO DE VARIÁVEIS
+**** ESTILOS GERAIS
+**** BODY
+**** HEADER
+**** FOOTER
+**** PÁGINA INICIAL
+**** EXTRAS
+**** @MEDIA
+*/
+
+/* VARIÁVEIS */
+:root{}
+/* VARIÁVEIS */
+  
+  
+/* GERAL */
+html, body, figure, div, input, textarea, p, h1, h2, h3, h4, h5, h6, ul, ol, li, a, button, form, img, span {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+/* GERAL */
+  
+/* HTML */
+html{}
+/* HTML */
+  
+/* BODY */
+body{}
+/* BODY */
+  
+/* HEADER */
+header{}
+/* HEADER */
+
+/* INICIAL */
+main{}
+
+/* INICIAL */
+  
+/* FOOTER */
+footer{}
+/* FOOTER */
+  
+
+/* EXTRAS */
+
+/* para estilizar a scrollbar */
+::-webkit-scrollbar{}
+::-webkit-scrollbar-button{}
+::-webkit-scrollbar-track{}
+::-webkit-scrollbar-track-piece{}
+::-webkit-scrollbar-thumb{}
+::-webkit-scrollbar-corner{}
+::-webkit-resizer{}
+/* EXTRAS */
+  
+
+/* MEDIA QUERIES */
+@media only screen and (min-width: 375px){
+
+}
+
+@media only screen and (min-width: 768px){
+
+}
+
+@media only screen and (min-width: 1200px) {
+
+}
+/* MEDIA QUERIES */
