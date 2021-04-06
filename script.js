@@ -1,10 +1,11 @@
 /* variaveis e constantes */
-let game_table = [[0,0,0,0,0,0,0],
-                  [0,0,0,0,0,0,0],
-                  [0,0,0,0,0,0,0],
-                  [0,0,0,0,0,0,0],
-                  [0,0,0,0,0,0,0],
-                  [0,0,0,0,0,0,0]]
+let game_table = [[0,0,0,0,0,0],
+                  [0,0,0,0,0,0],
+                  [0,0,0,0,0,0],
+                  [0,0,0,0,0,0],
+                  [0,0,0,0,0,0],
+                  [0,0,0,0,0,0],
+                  [0,0,0,0,0,0]]
 const game_screen = document.getElementById("game")
 let first_player_turn = true
 /* variaveis e constantes */
