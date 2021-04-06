@@ -126,6 +126,13 @@ function checkWin(){
   let vertical = checkVertical()
   let horizontal = checkHorizontal()
   let diagonal = checkDiagonal()
+  let result = document.createElement('h1')
+  if((vertical || horizontal || diagonal) === true){
+    if(first_player_turn){
+      result.innerText = `${namePlayerOne}`
+    }
+    else{
+      result.innerText = `${namePlayerTwo}`
   let draw = checkDraw()
   let result = document.createElement('h1')
   if((vertical || horizontal || diagonal) === true){
@@ -137,6 +144,7 @@ function checkWin(){
     }
     containerGameWin.appendChild(result)
     containerGamePage.classList.add('hidden');
+    document.getElementById('game_win').classList.remove('hidden')
     containerGameWin.classList.remove('hidden')
   }
   if(draw){
