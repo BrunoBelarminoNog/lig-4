@@ -59,7 +59,7 @@ function put_piece(row_selected){
 
 
 /* function verificar resultado da partida */ 
-function checkHorizontal() {
+function checkVertical() {
   let output = false;
   for (let row = 0; row < game_table.length; row++) {
     for (let col = 3; col < game_table[row].length; col++) {
@@ -75,7 +75,7 @@ function checkHorizontal() {
   }
   return output;
 }
-function checkVertical() {
+function checkHorizontal() {
   let output = false;
   for (let row = 3; row < game_table.length; row++) {
     for (let col = 0; col < game_table[0].length; col++) {
@@ -123,18 +123,17 @@ function checkWin(){
   let vertical = checkVertical()
   let horizontal = checkHorizontal()
   let diagonal = checkDiagonal()
-  let result = document.createElement('span')
+  let result = document.createElement('h1')
   if((vertical || horizontal || diagonal) === true){
-    document.getElementById('game_win').innerHTML = ''
     if(first_player_turn){
-      result.innerHTML = `${inputPlayerOne.value} ganhou!`
+      result.innerHTML = `${inputPlayerOne.value}`
     }
     else{
-      result.innerHTML = `${inputPlayerTwo.value} ganhou!`
+      result.innerHTML = `${inputPlayerTwo.value}`
     }
     document.getElementById('game_win').appendChild(result)
     containerGamePage.classList.add('hidden');
-    document.getElementById('game_win').remove('hidden')
+    document.getElementById('game_win').classList.remove('hidden')
   }
 }
 /* function verificar resultado da partida */ 
