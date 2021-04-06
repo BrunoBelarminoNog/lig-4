@@ -4,6 +4,7 @@ let game_table = [[0,0,0,0,0,0],
                   [0,0,0,0,0,0],
                   [0,0,0,0,0,0],
                   [0,0,0,0,0,0],
+                  [0,0,0,0,0,0],
                   [0,0,0,0,0,0]]
 const game_screen = document.getElementById("tabuleiro")
 let first_player_turn = true
@@ -41,7 +42,83 @@ function put_piece(row_selected){
 
 
 /* function verificar resultado da partida */ 
-
+function checkHorizontal() {
+  let output = false;
+  for (let row = 0; row < game_table.length; row++) {
+    for (let col = 3; col < game_table[row].length; col++) {
+      if (
+        game_table[row][col - 3] === game_table[row][col - 2] &&
+        game_table[row][col - 2] === game_table[row][col - 1] &&
+        game_table[row][col - 1] === game_table[row][col] &&
+        game_table[row][col] !== 0
+      ) {
+        output = true;
+      }
+    }
+  }
+  return output;
+}
+function checkVertical() {
+  let output = false;
+  for (let row = 3; row < game_table.length; row++) {
+    for (let col = 0; col < game_table[0].length; col++) {
+      if (
+        game_table[row - 3][col] === game_table[row - 2][col] &&
+        game_table[row - 2][col] === game_table[row - 1][col] &&
+        game_table[row - 1][col] === game_table[row][col] &&
+        game_table[row][col] !== 0
+      ) {
+        output = true;
+      }
+    }
+  }
+  return output;
+}
+function checkDiagonal() {
+  let game_table = [
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 1, 0, 1],
+    [0, 0, 1, 0, 1, 0],
+    [0, 0, 0, 1, 0, 1],
+    [0, 0, 1, 0, 0, 0],
+    [0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 0]
+  ];
+  let output = false;
+  for (let row = 3; row < game_table.length; row++) {
+    for (let col = 3; col < game_table[0].length; col++) {
+      if (
+        game_table[row - 3][col - 3] === game_table[row - 2][col - 2] &&
+        game_table[row - 2][col - 2] === game_table[row - 1][col - 1] &&
+        game_table[row - 1][col - 1] === game_table[row][col] &&
+        game_table[row - 3][col - 3] !== 0
+      ) {
+        output = true;
+      }
+      if (
+        game_table[row - 3][col] === game_table[row - 2][col - 1] &&
+        game_table[row - 2][col - 1] === game_table[row - 1][col - 2] &&
+        game_table[row - 1][col - 2] === game_table[row][col - 3] &&
+        game_table[row - 3][col - 3] !== 0
+      ) {
+        output = true;
+      }
+      console.log(row - 3, col - 3);
+      // console.log(row, col)
+    }
+  }
+  console.log(
+    game_table[1][5] === game_table[2][4] &&
+      game_table[2][4] === game_table[3][3] &&
+      game_table[3][3] === game_table[4][2]
+  );
+  console.log(game_table[1][5]);
+  console.log(game_table[2][4]);
+  console.log(game_table[3][3]);
+  console.log(game_table[4][2]);
+  console.log(output);
+}
+checkDiagonal();
 /* function verificar resultado da partida */ 
 
 
