@@ -108,8 +108,6 @@ main #content_game:before {
     z-index: -1;
 }
 
-main #content_game #initial 
-
 main #content_game #initial h1{
     font-size: 4rem;
     text-align: center;
