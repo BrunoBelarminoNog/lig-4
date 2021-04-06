@@ -174,6 +174,25 @@ main #content_game #initial #audio {
     color: #000;
 }
 
+main #content_game #game_win {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+}
+
+main #content_game #game_win h1 {
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    text-shadow:#000 4px -4px, #000 -4px 4px, #000 4px 4px, #000 -4px -4px;
+    color: rgb(169, 156, 248);
+}
+
+main #content_game #game_win img {
+    width: 300px;
+    border-radius: 20px;
+}
+
 /* INICIAL */
   
 /* FOOTER */
