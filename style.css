@@ -141,7 +141,7 @@ main #content_game #initial button {
     margin-top: 1rem;
     font-size: 1.2rem;
     padding: .4rem .5rem;
-    border-radius: 6px;
+    border-radius: 18px;
     border: 2px solid transparent;
     outline: none;
     cursor: pointer;
@@ -149,10 +149,13 @@ main #content_game #initial button {
     background-color: #fff;
 }
 
-main #content_game #initial button:hover {
+main #content_game #initial button:hover, 
+main #content_game #initial #info:hover, 
+main #content_game #initial #ranking:hover, 
+main #content_game #initial #audio:hover {
     background: none;
     border: 2px solid #fff;
-    color: #fff;
+    color: #000;
 } 
 
 main #content_game #initial .settings_infos {
@@ -167,13 +170,60 @@ main #content_game #initial #audio {
     margin-top: 1rem;
     font-size: 1.2rem;
     padding: .4rem 1rem;
-    border-radius: 6px;
+    border-radius: 18px;
     border: 2px solid transparent;
     outline: none;
     cursor: pointer;
     transition: all 400ms;
     background-color: #fff;
     color: #000;
+    margin-right: 16px;
+}
+
+main #content_game #initial #info {
+    flex: 1;
+    text-align: center;
+}
+
+main #content_game #initial #audio svg{
+    width: 30px;
+}
+
+main #content_game #initial #ranking {
+    margin-right: 0;
+}
+
+main #content_game #initial #ranking svg {
+    width: 28px;
+    height: 32px;
+    fill: #000;
+    transform: translateY(3px);
+}
+
+main  #bio{
+    position: absolute;
+    border: 2px solid #f6f6f6;
+    background-color: #f6f6f6;
+    padding: ;
+    border-radius: 40px 0 0 40px;
+    width: 50px;
+    height: 50px;
+    bottom: 0;
+    right: 20%;
+    transform: rotate(90deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+main #bio svg {
+    width: 18px;
+    height: 18px;
+    fill: #000;
+    padding: 8px;
+    transform: translateY(2px);
+    animation: moveLeft .5s alternate-reverse infinite ease-in-out;
 }
 
 main #content_game #game {
