@@ -217,10 +217,16 @@ main  #bio{
 }
 
 main #content_game #game_win {
-    display: flex;
-    flex-direction: column;
-    align-self: flex-end;
-    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 20% 60% 20%;
+    gap: 0px 0px;
+    grid-template-areas:
+        "player"
+        "img"
+        "btn";
+    align-items: center;
+    max-height: 100%;
 }
 
 main #content_game #game_win h1 {
@@ -228,11 +234,29 @@ main #content_game #game_win h1 {
     text-align: center;
     text-shadow:#000 4px -4px, #000 -4px 4px, #000 4px 4px, #000 -4px -4px;
     color: rgb(169, 156, 248);
+    grid-area: player;
 }
 
 main #content_game #game_win img {
-    width: 380px;
+    width: 300px;
+    grid-area: img;
 }
+
+main #content_game #game_win button {
+    width: 50%;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    padding: .4rem .5rem;
+    border-radius: 18px;
+    border: 2px solid transparent;
+    outline: none;
+    cursor: pointer;
+    transition: all 400ms;
+    background-color: #fff;
+    margin: 0 auto;
+    grid-area: btn;
+}
+
 
 
 main #bio svg {

@@ -16,6 +16,7 @@ const inputPlayerTwo = document.getElementById('player_two');
 const btnStartGame = document.getElementById('submit_game');
 const containerNamePlayerOneInGame = document.getElementById('player_one_name');
 const containerNamePlayerTwoInGame = document.getElementById('player_two_name');
+const btnRestartGame = document.querySelector('.reset_game')
 const containerGameWin = document.getElementById('game_win')
 const containerGameDraw = document.getElementById('game_draw')
 let root = document.querySelector(':root');
@@ -146,6 +147,7 @@ function checkWin(){
     containerGameDraw.classList.remove('hidden')
   }
 }
+
 function checkDraw(){
   let output = false
   game_table.map((element) => {
@@ -225,4 +227,13 @@ btnStartGame.addEventListener('click', (event) => {
 
   containerHomePage.classList.add('hidden');
   containerGamePage.classList.remove('hidden');
+})
+
+function RestartGame() {
+  let btnReset = document.querySelectorAll(".reset_game");
+ 
+}
+
+btnRestartGame.addEventListener('click', ()=> {
+
 })
