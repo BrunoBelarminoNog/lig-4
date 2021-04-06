@@ -224,6 +224,122 @@ main #bio svg {
     animation: moveLeft .5s alternate-reverse infinite ease-in-out;
 }
 
+main #content_game #game {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+main #content_game #game #timer {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #444;
+    align-self: flex-end;
+    transform: translateY(-65px);
+
+}
+
+main #content_game #game #timer svg{
+    width: 2rem;
+    height: 2rem;
+    fill: rgb(7, 7, 85);
+    margin-right: 8px;
+}
+
+
+
+main #content_game #game #tabuleiro  {
+    width: 100%;
+    max-width: 750px;
+    display: flex;
+    border-radius: 12px;
+    background-color: rgba(0, 0, 255, 0.349);
+    padding: 0 1rem;
+}
+
+main #content_game #game #tabuleiro .column{
+    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 200ms;
+}
+
+main #content_game #game #tabuleiro .column:hover {
+    background-color: darkblue;
+}
+
+main #content_game #game #tabuleiro .column:hover::before {
+    content: "";
+    width: 8vw;
+    height: 8vw;
+    border-radius: 50%;
+    background-color: rgb(0, 0, 0);
+    position: absolute;
+    top: -40px;
+}   
+
+
+main #content_game #game #tabuleiro .column div{
+    width: 10vw;
+    max-width: 80px;
+    height: 10vw;
+    max-width: 80px;
+    position: relative;
+}
+
+main #content_game #game #tabuleiro .column div.red::before{
+    background-color: red;
+}
+
+main #content_game #game #tabuleiro .column div.blue::before{
+    background-color: blue;
+}
+
+main #content_game #game #tabuleiro .column div::before {
+    content: "";
+    position: absolute;
+    width: 85%;
+    height: 85%;
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255);
+    box-shadow:  5px 5px 12px rgba(6, 6, 116, 0.616),
+                 -3px -3px 6px #ffffff65,
+                 inset 4px 4px 8px rgba(0, 0, 0, 0.418);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+main #content_game #game #players{
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main #content_game #game #players svg {
+    width: 1.5rem;
+}
+
+main #content_game #game #players #player_one_name {
+    color: blue;
+    text-transform: uppercase;
+}
+
+main #content_game #game #players #player_two_name {
+    color: red;
+    text-transform: uppercase;
+}
 /* INICIAL */
   
 /* FOOTER */

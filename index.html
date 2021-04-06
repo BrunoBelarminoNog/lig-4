@@ -22,7 +22,7 @@
         <div class="container">
 
             <div id="content_game">
-                <section id="initial">
+                <section id="initial" class="hidden">
                     <h1>Lig<span>4</span></h1>
 
                     <div class="input_players">
@@ -84,9 +84,36 @@
 
                     </div>
                 </section>
-        
-                <section id="game" class="hidden">
 
+                <section id="game">
+                    <div id="timer">
+                        <span class="timer_icon">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <title>timer</title>
+                                <path
+                                    d="M12 20.016q2.906 0 4.945-2.063t2.039-4.969-2.039-4.945-4.945-2.039-4.945 2.039-2.039 4.945 2.039 4.969 4.945 2.063zM19.031 7.406q0.797 1.031 1.383 2.648t0.586 2.93q0 3.703-2.625 6.352t-6.375 2.648-6.375-2.648-2.625-6.352 2.625-6.352 6.375-2.648q1.266 0 2.93 0.609t2.695 1.406l1.406-1.453q0.75 0.609 1.406 1.406zM11.016 14.016v-6h1.969v6h-1.969zM15 0.984v2.016h-6v-2.016h6z">
+                                </path>
+                            </svg>
+                        </span>
+                        <span class="timer_content">
+                            00:00
+                        </span>
+                    </div>
+                    <div id="tabuleiro"></div>
+                    <div id="players">
+                        <div id="player_one_name">
+                            Lorem Ipsum
+                        </div>
+                        <div id="versus_players">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                                <title>arrow</title>
+                                <path d="M1 16l15 15v-9h16v-12h-16v-9z"></path>
+                            </svg>
+                        </div>
+                        <div id="player_two_name">
+                            Lorem Ipsum
+                        </div>
+                    </div>
                 </section>
  
                 <section id="game_win" class="hidden">
