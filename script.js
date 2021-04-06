@@ -26,6 +26,7 @@ let namePlayerTwo
 
 
 /* eventos de click  */
+const btnAjuda = document.getElementById('info')
 
 /* eventos de click  */
 
