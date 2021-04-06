@@ -273,11 +273,8 @@ btnRestartGame.addEventListener('click', ()=> {
 })
 
 btnAjuda.addEventListener('click', () => {
-  containerHomePage.classList.add('hidden')
   containerInfo.classList.remove('hidden')
 })
 btnClose.addEventListener('click', () => {
   containerInfo.classList.add('hidden')
-  containerHomePage.classList.remove('hidden')
-  resetaCronometro()
 })
