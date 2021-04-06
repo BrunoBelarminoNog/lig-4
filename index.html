@@ -1,25 +1,161 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lig-4</title>
-
-    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@300;400;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
+    <div id="particles-js"></div>
+
     <header>
 
     </header>
 
     <main>
+        <div class="container">
 
+            <div id="content_game">
+                <section id="initial" >
+                    <h1>Lig<span>4</span></h1>
+
+                    <div class="input_players">
+                        <input type="text" placeholder="Nome do Jogador 1" id="player_one">
+                        <input type="text" placeholder="Nome do Jogador 2" id="player_two">
+                    </div>
+                    <button type="button" id="submit_game">Novo Jogo</button>
+
+                    <div class="settings_infos">
+                        <div id="audio">
+                            <span id="audio_on">
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="34" height="32"
+                                    viewBox="0 0 34 32">
+                                    <title>Audio ligado</title>
+                                    <path
+                                        d="M27.814 28.814c-0.384 0-0.768-0.146-1.061-0.439-0.586-0.586-0.586-1.535 0-2.121 2.739-2.739 4.247-6.38 4.247-10.253s-1.508-7.514-4.247-10.253c-0.586-0.586-0.586-1.536 0-2.121s1.536-0.586 2.121 0c3.305 3.305 5.126 7.7 5.126 12.374s-1.82 9.069-5.126 12.374c-0.293 0.293-0.677 0.439-1.061 0.439zM22.485 25.985c-0.384 0-0.768-0.146-1.061-0.439-0.586-0.586-0.586-1.535 0-2.121 4.094-4.094 4.094-10.755 0-14.849-0.586-0.586-0.586-1.536 0-2.121s1.536-0.586 2.121 0c2.55 2.55 3.954 5.94 3.954 9.546s-1.404 6.996-3.954 9.546c-0.293 0.293-0.677 0.439-1.061 0.439v0zM17.157 23.157c-0.384 0-0.768-0.146-1.061-0.439-0.586-0.586-0.586-1.535 0-2.121 2.534-2.534 2.534-6.658 0-9.192-0.586-0.586-0.586-1.536 0-2.121s1.535-0.586 2.121 0c3.704 3.704 3.704 9.731 0 13.435-0.293 0.293-0.677 0.439-1.061 0.439z">
+                                    </path>
+                                    <path
+                                        d="M13 30c-0.26 0-0.516-0.102-0.707-0.293l-7.707-7.707h-3.586c-0.552 0-1-0.448-1-1v-10c0-0.552 0.448-1 1-1h3.586l7.707-7.707c0.286-0.286 0.716-0.372 1.090-0.217s0.617 0.519 0.617 0.924v26c0 0.404-0.244 0.769-0.617 0.924-0.124 0.051-0.254 0.076-0.383 0.076z">
+                                    </path>
+                                </svg>
+                            </span>
+                            <span id="audio_off" class="hidden">
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                                    viewBox="0 0 32 32">
+                                    <title>Audio desligado</title>
+                                    <path
+                                        d="M30 19.348v2.652h-2.652l-3.348-3.348-3.348 3.348h-2.652v-2.652l3.348-3.348-3.348-3.348v-2.652h2.652l3.348 3.348 3.348-3.348h2.652v2.652l-3.348 3.348 3.348 3.348z">
+                                    </path>
+                                    <path
+                                        d="M13 30c-0.26 0-0.516-0.102-0.707-0.293l-7.707-7.707h-3.586c-0.552 0-1-0.448-1-1v-10c0-0.552 0.448-1 1-1h3.586l7.707-7.707c0.286-0.286 0.716-0.372 1.090-0.217s0.617 0.519 0.617 0.924v26c0 0.404-0.244 0.769-0.617 0.924-0.124 0.051-0.254 0.076-0.383 0.076z">
+                                    </path>
+                                </svg>
+                            </span>
+                        </div>
+                        <div id="info">
+                            <div>
+                                <span>Ajuda</span>
+                            </div>
+                        </div>
+                        <div id="ranking">
+                            <div>
+                                <span>
+                                    <svg height="512pt" viewBox="0 0 512 512" width="512pt"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="m446.136719 189.128906-28.140625-57.023437-28.140625 57.023437-62.914063 9.140625 45.527344 44.386719-10.75 62.679688 56.277344-29.589844 56.308594 29.589844-10.78125-62.679688 46.558593-44.386719zm0 0" />
+                                        <path
+                                            d="m122.144531 189.128906-28.140625-57.023437-28.140625 57.023437-63.945312 9.140625 46.558593 44.386719-10.78125 62.679688 56.308594-29.589844 56.277344 29.589844-10.75-62.679688 45.527344-44.386719zm0 0" />
+                                        <path
+                                            d="m181 0v30h-60v45c0 41.351562 33.648438 76 75 76h.238281c5.371094 7.867188 11.390625 15.621094 17.722657 23.144531 13.285156 15.804688 27.039062 32.152344 27.039062 45.792969v21.0625h-30v30h90v-30h-30v-21.0625c0-13.640625 13.753906-29.988281 27.039062-45.792969 6.335938-7.527343 12.355469-15.28125 17.726563-23.144531h.234375c41.351562 0 75-34.648438 75-76v-45h-60v-30zm-30 75v-15h30v46c0 4.328125.726562 8.503906 1.4375 12.683594-18.160156-5.792969-31.4375-23.625-31.4375-43.683594zm210-15v15c0 20.058594-13.277344 37.890625-31.4375 43.683594.710938-4.175782 1.4375-8.355469 1.4375-12.683594v-46zm0 0" />
+                                        <path d="m331 301h-150v211h150zm-30 150h-90v-30h30v-30h-30v-30h60v60h30zm0 0" />
+                                        <path d="m361 391h151v121h-151zm0 0" />
+                                        <path d="m0 361h151v151h-151zm0 0" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section id="game" class="hidden">
+                    <div id="timer">
+                        <span class="timer_icon">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <title>timer</title>
+                                <path
+                                    d="M12 20.016q2.906 0 4.945-2.063t2.039-4.969-2.039-4.945-4.945-2.039-4.945 2.039-2.039 4.945 2.039 4.969 4.945 2.063zM19.031 7.406q0.797 1.031 1.383 2.648t0.586 2.93q0 3.703-2.625 6.352t-6.375 2.648-6.375-2.648-2.625-6.352 2.625-6.352 6.375-2.648q1.266 0 2.93 0.609t2.695 1.406l1.406-1.453q0.75 0.609 1.406 1.406zM11.016 14.016v-6h1.969v6h-1.969zM15 0.984v2.016h-6v-2.016h6z">
+                                </path>
+                            </svg>
+                        </span>
+                        <span class="timer_content">
+                            00:00
+                        </span>
+                    </div>
+                    <div id="tabuleiro"></div>
+                    <div id="players">
+                        <div id="player_one_name">
+                            Lorem Ipsum
+                        </div>
+                        <div id="versus_players">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                                <title>arrow</title>
+                                <path d="M1 16l15 15v-9h16v-12h-16v-9z"></path>
+                            </svg>
+                        </div>
+                        <div id="player_two_name">
+                            Lorem Ipsum
+                        </div>
+                    </div>
+                </section>
+ 
+                <section id="game_win" class="hidden">
+                    
+                </section>
+
+                <section id="game_empate" class="hidden">
+
+                </section>
+            </div>
+            <div id="bio">
+                <div>
+                    <span>
+                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 612 612"
+                            style="enable-background:new 0 0 612 612;" xml:space="preserve">
+                            <g>
+                                <g id="_x34__11_">
+                                    <g>
+                                        <path d="M124.172,305.975L342.365,87.781c20.079-20.079,20.079-52.644,0-72.722c-20.079-20.079-52.644-20.079-72.723,0
+    L15.062,269.639c-20.079,20.079-20.079,52.644,0,72.723l254.58,254.58c20.079,20.078,52.644,20.078,72.723,0
+    c20.079-20.079,20.079-52.644,0-72.723L124.172,305.975z M431.395,305.694l165.371-165.982c20.308-20.359,20.308-53.408,0-73.768
+    c-20.309-20.359-53.204-20.359-73.513,0L321.139,268.823c-20.309,20.359-17.047,35.266,3.032,55.345L523.253,545.47
+    c20.309,20.359,53.204,20.359,73.513,0c20.308-20.359,20.308-53.408,0-73.768L431.395,305.694z" />
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+
+                    </span>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer>
-        
+
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="./set_particle.js"></script>
     <script src="./script.js"></script>
 </body>
+
 </html>
