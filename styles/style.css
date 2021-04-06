@@ -398,6 +398,31 @@ main #content_game #game #players #player_two_name {
     color: red;
     text-transform: uppercase;
 }
+main #info_div {
+    display: flex;
+    flex-flow: row-reverse wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    position: relative;
+}
+main #info_div #close {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0.8rem;
+}
+main #info_div #close span svg {
+    width: 1.5rem;
+}
+main #info_div article {
+    width: 70%;
+    font-size: 0.8rem;
+    line-height: 1.2;
+    text-align: justify;
+}
+main #info_div article h4 {
+    margin: 0.5rem 0;
 
 main #content_game #game_draw {
     position: relative;

@@ -14,11 +14,14 @@ const containerGamePage = document.getElementById('game');
 const inputPlayerOne = document.getElementById('player_one');
 const inputPlayerTwo = document.getElementById('player_two');
 const btnStartGame = document.getElementById('submit_game');
+const btnAjuda = document.getElementById('info');
+const btnClose = document.getElementById('close');
+const btnRestartGame = document.querySelector('.reset_game');
 const containerNamePlayerOneInGame = document.getElementById('player_one_name');
 const containerNamePlayerTwoInGame = document.getElementById('player_two_name');
-const btnRestartGame = document.querySelector('.reset_game')
 const containerGameWin = document.getElementById('game_win')
 const containerGameDraw = document.getElementById('game_draw')
+const containerInfo = document.getElementById('info_div')
 let root = document.querySelector(':root');
 
 let namePlayerOne
@@ -266,5 +269,15 @@ function RestartGame() {
 }
 
 btnRestartGame.addEventListener('click', ()=> {
+
+})
+
+btnAjuda.addEventListener('click', () => {
+  containerHomePage.classList.add('hidden')
+  containerInfo.classList.remove('hidden')
+})
+btnClose.addEventListener('click', () => {
+  containerInfo.classList.add('hidden')
+  containerHomePage.classList.remove('hidden')
   resetaCronometro()
 })
