@@ -127,6 +127,8 @@ function checkWin(){
       result.innerHTML = `${inputPlayerTwo.value} ganhou!`
     }
     document.getElementById('game_win').appendChild(result)
+    containerGamePage.classList.add('hidden');
+    document.getElementById('game_win').remove('hidden')
   }
 }
 /* function verificar resultado da partida */ 
