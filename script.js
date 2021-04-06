@@ -5,7 +5,7 @@ let game_table = [[0,0,0,0,0,0],
                   [0,0,0,0,0,0],
                   [0,0,0,0,0,0],
                   [0,0,0,0,0,0]]
-const game_screen = document.getElementById("game")
+const game_screen = document.getElementById("tabuleiro")
 let first_player_turn = true
 /* variaveis e constantes */
 
@@ -90,3 +90,6 @@ function create_table(){
     });
 }
 /* function criar tabela */
+
+
+init_game()
