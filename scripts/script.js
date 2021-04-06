@@ -140,8 +140,6 @@ function checkWin(){
     containerGameWin.classList.remove('hidden')
   }
   if(draw){
-    result.innerHTML = 'Empatou!'
-    containerGameDraw.appendChild(result)
     containerGamePage.classList.add('hidden');
     containerGameDraw.classList.remove('hidden')
   }
