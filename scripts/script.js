@@ -126,14 +126,14 @@ function checkWin(){
   let result = document.createElement('h1')
   if((vertical || horizontal || diagonal) === true){
     if(first_player_turn){
-      result.innerHTML = `${namePlayerOne}`
+      result.innerText = `${namePlayerOne}`
     }
     else{
-      result.innerHTML = `${namePlayerTwo}`
+      result.innerText = `${namePlayerTwo}`
     }
     document.getElementById('game_win').appendChild(result)
     containerGamePage.classList.add('hidden');
-    document.getElementById('game_win').remove('hidden')
+    document.getElementById('game_win').classList.remove('hidden')
   }
 }
 /* function verificar resultado da partida */ 

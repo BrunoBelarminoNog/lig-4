@@ -220,12 +220,13 @@ main #content_game #game_win {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 20% 60% 20%;
-    gap: 27px 0px;
+    gap: 0px 0px;
     grid-template-areas:
         "player"
         "img"
         "btn";
     align-items: center;
+    max-height: 100%;
 }
 
 main #content_game #game_win h1 {
