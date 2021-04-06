@@ -30,6 +30,39 @@ let namePlayerTwo
 
 /* eventos de click  */
 
+/* cronometro */
+let segundo = 0;
+let minuto = 0;
+let cronometro;
+
+function iniciaCronometro() {
+    clearInterval(cronometro)
+    cronometro = setInterval(() => { temp(); }, 1000);
+}
+
+function resetaCronometro() {
+    clearInterval(cronometro);
+    minuto = 0;
+    segundo = 0;
+
+    document.getElementById('cronometro').innerText = '00:00';
+}
+
+function temp() {
+    segundo++
+
+    if (segundo == 60) {
+        segundo = 0
+        minuto++
+    }
+
+    let saida = (minuto < 10 ? '0' + minuto : minuto) + ':' + (segundo < 10 ? '0' + segundo : segundo);
+   
+    document.getElementById("cronometro").innerText = saida;
+
+    return saida;
+}
+/* cronometro */
 
 /* function revezamento de turno */
 function put_piece(row_selected){
@@ -143,6 +176,7 @@ function checkWin(){
     containerGamePage.classList.add('hidden');
     containerGameDraw.classList.remove('hidden')
   }
+  resetaCronometro()
 }
 
 function checkDraw(){
@@ -198,6 +232,7 @@ function create_table(){
         element.addEventListener("click", e =>{
             let column_selected = element.dataset.column_value
             put_piece(column_selected)
+            iniciaCronometro()
         })
     });
     checkWin()
