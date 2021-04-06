@@ -176,7 +176,6 @@ function checkWin(){
     containerGamePage.classList.add('hidden');
     containerGameDraw.classList.remove('hidden')
   }
-  resetaCronometro()
 }
 
 function checkDraw(){
@@ -267,5 +266,5 @@ function RestartGame() {
 }
 
 btnRestartGame.addEventListener('click', ()=> {
-
+  resetaCronometro()
 })
