@@ -8,6 +8,17 @@ let game_table = [[0,0,0,0,0,0],
                   [0,0,0,0,0,0]]
 const game_screen = document.getElementById("tabuleiro")
 let first_player_turn = true
+
+const containerHomePage = document.getElementById('initial');
+const containerGamePage = document.getElementById('game');
+const inputPlayerOne = document.getElementById('player_one');
+const inputPlayerTwo = document.getElementById('player_two');
+const btnStartGame = document.getElementById('submit_game');
+const containerNamePlayerOneInGame = document.getElementById('player_one_name');
+const containerNamePlayerTwoInGame = document.getElementById('player_two_name');
+
+let namePlayerOne
+let namePlayerTwo
 /* variaveis e constantes */
 
 
@@ -169,4 +180,23 @@ function create_table(){
 /* function criar tabela */
 
 
-init_game()
+btnStartGame.addEventListener('click', (event) => {
+  if(inputPlayerOne.value === "" || inputPlayerTwo.value === "") {
+    event.preventDefault()
+    alert('Preencha o campo de nomes')
+  }
+
+  namePlayerOne = inputPlayerOne.value;
+  namePlayerTwo = inputPlayerTwo.value;
+
+  inputPlayerOne.value = ""
+  inputPlayerTwo.value = ""
+
+  containerNamePlayerOneInGame.innerHTML = `${namePlayerOne}`;
+  containerNamePlayerTwoInGame.innerHTML = `${namePlayerTwo}`;
+
+  init_game()
+
+  containerHomePage.classList.add('hidden');
+  containerGamePage.classList.remove('hidden');
+})
