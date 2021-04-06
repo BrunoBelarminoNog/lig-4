@@ -123,14 +123,13 @@ function checkWin(){
   let vertical = checkVertical()
   let horizontal = checkHorizontal()
   let diagonal = checkDiagonal()
-  let result = document.createElement('span')
+  let result = document.createElement('h1')
   if((vertical || horizontal || diagonal) === true){
-    document.getElementById('game_win').innerHTML = ''
     if(first_player_turn){
-      result.innerHTML = `${inputPlayerOne.value} ganhou!`
+      result.innerHTML = `${namePlayerOne}`
     }
     else{
-      result.innerHTML = `${inputPlayerTwo.value} ganhou!`
+      result.innerHTML = `${namePlayerTwo}`
     }
     document.getElementById('game_win').appendChild(result)
     containerGamePage.classList.add('hidden');
