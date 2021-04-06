@@ -17,6 +17,8 @@ const btnStartGame = document.getElementById('submit_game');
 const containerNamePlayerOneInGame = document.getElementById('player_one_name');
 const containerNamePlayerTwoInGame = document.getElementById('player_two_name');
 const btnRestartGame = document.querySelector('.reset_game')
+const containerGameWin = document.getElementById('game_win')
+const containerGameDraw = document.getElementById('game_draw')
 let root = document.querySelector(':root');
 
 let namePlayerOne
@@ -60,7 +62,7 @@ function put_piece(row_selected){
 
 
 /* function verificar resultado da partida */ 
-function checkHorizontal() {
+function checkVertical() {
   let output = false;
   for (let row = 0; row < game_table.length; row++) {
     for (let col = 3; col < game_table[row].length; col++) {
@@ -76,7 +78,7 @@ function checkHorizontal() {
   }
   return output;
 }
-function checkVertical() {
+function checkHorizontal() {
   let output = false;
   for (let row = 3; row < game_table.length; row++) {
     for (let col = 0; col < game_table[0].length; col++) {
@@ -131,11 +133,35 @@ function checkWin(){
     }
     else{
       result.innerText = `${namePlayerTwo}`
+  let draw = checkDraw()
+  let result = document.createElement('h1')
+  if((vertical || horizontal || diagonal) === true){
+    if(first_player_turn){
+      result.innerHTML = `${namePlayerOne}`
     }
-    document.getElementById('game_win').appendChild(result)
+    else{
+      result.innerHTML = `${namePlayerTwo}`
+    }
+    containerGameWin.appendChild(result)
     containerGamePage.classList.add('hidden');
     document.getElementById('game_win').classList.remove('hidden')
+    containerGameWin.classList.remove('hidden')
   }
+  if(draw){
+    result.innerHTML = 'Empatou!'
+    containerGameDraw.appendChild(result)
+    containerGamePage.classList.add('hidden');
+    containerGameDraw.classList.remove('hidden')
+  }
+}
+function checkDraw(){
+  let output = false
+  game_table.map((element) => {
+    if(! element.includes(0)){
+      output = true
+    }
+  })
+  return output
 }
 /* function verificar resultado da partida */ 
 
