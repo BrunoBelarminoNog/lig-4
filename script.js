@@ -16,6 +16,8 @@ const inputPlayerTwo = document.getElementById('player_two');
 const btnStartGame = document.getElementById('submit_game');
 const containerNamePlayerOneInGame = document.getElementById('player_one_name');
 const containerNamePlayerTwoInGame = document.getElementById('player_two_name');
+const containerGameWin = document.getElementById('game_win')
+const containerGameDraw = document.getElementById('game_draw')
 let root = document.querySelector(':root');
 
 let namePlayerOne
@@ -123,18 +125,34 @@ function checkWin(){
   let vertical = checkVertical()
   let horizontal = checkHorizontal()
   let diagonal = checkDiagonal()
+  let draw = checkDraw()
   let result = document.createElement('h1')
   if((vertical || horizontal || diagonal) === true){
     if(first_player_turn){
-      result.innerHTML = `${inputPlayerOne.value}`
+      result.innerHTML = `${namePlayerOne}`
     }
     else{
-      result.innerHTML = `${inputPlayerTwo.value}`
+      result.innerHTML = `${namePlayerTwo}`
     }
-    document.getElementById('game_win').appendChild(result)
+    containerGameWin.appendChild(result)
     containerGamePage.classList.add('hidden');
-    document.getElementById('game_win').classList.remove('hidden')
+    containerGameWin.classList.remove('hidden')
   }
+  if(draw){
+    result.innerHTML = 'Empatou!'
+    containerGameDraw.appendChild(result)
+    containerGamePage.classList.add('hidden');
+    containerGameDraw.classList.remove('hidden')
+  }
+}
+function checkDraw(){
+  let output = false
+  game_table.map((element) => {
+    if(! element.includes(0)){
+      output = true
+    }
+  })
+  return output
 }
 /* function verificar resultado da partida */ 
 
