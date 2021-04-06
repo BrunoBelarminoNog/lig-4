@@ -263,13 +263,10 @@ btnStartGame.addEventListener('click', (event) => {
   containerGamePage.classList.remove('hidden');
 })
 
-function RestartGame() {
-  let btnReset = document.querySelectorAll(".reset_game");
- 
-}
-
 btnRestartGame.addEventListener('click', ()=> {
-
+  containerGameWin.classList.add('hidden')
+  containerGameDraw.classList.add('hidden')
+  containerHomePage.classList.remove('hidden')
 })
 
 btnAjuda.addEventListener('click', () => {
