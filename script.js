@@ -119,6 +119,22 @@ function checkDiagonal() {
   }
   return output;
 }
+function checkWin(){
+  let vertical = checkVertical()
+  let horizontal = checkHorizontal()
+  let diagonal = checkDiagonal()
+  let result = document.createElement('span')
+  if((vertical || horizontal || diagonal) === true){
+    document.getElementById('game_win').innerHTML = ''
+    if(first_player_turn){
+      result.innerHTML = `${inputPlayerOne.value} ganhou!`
+    }
+    else{
+      result.innerHTML = `${inputPlayerTwo.value} ganhou!`
+    }
+    document.getElementById('game_win').appendChild(result)
+  }
+}
 /* function verificar resultado da partida */ 
 
 
@@ -165,6 +181,7 @@ function create_table(){
             put_piece(column_selected)
         })
     });
+    checkWin()
 }
 /* function criar tabela */
 
