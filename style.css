@@ -13,7 +13,9 @@ ESTRUTURAÇÃO BASE
 */
 
 /* VARIÁVEIS */
-:root{}
+:root{
+    --background_color_column_indicator: blue;
+}
 /* VARIÁVEIS */
   
   
@@ -139,7 +141,7 @@ main #content_game #initial button {
     margin-top: 1rem;
     font-size: 1.2rem;
     padding: .4rem .5rem;
-    border-radius: 6px;
+    border-radius: 18px;
     border: 2px solid transparent;
     outline: none;
     cursor: pointer;
@@ -147,10 +149,13 @@ main #content_game #initial button {
     background-color: #fff;
 }
 
-main #content_game #initial button:hover {
+main #content_game #initial button:hover, 
+main #content_game #initial #info:hover, 
+main #content_game #initial #ranking:hover, 
+main #content_game #initial #audio:hover {
     background: none;
     border: 2px solid #fff;
-    color: #fff;
+    color: #000;
 } 
 
 main #content_game #initial .settings_infos {
@@ -165,13 +170,50 @@ main #content_game #initial #audio {
     margin-top: 1rem;
     font-size: 1.2rem;
     padding: .4rem 1rem;
-    border-radius: 6px;
+    border-radius: 18px;
     border: 2px solid transparent;
     outline: none;
     cursor: pointer;
     transition: all 400ms;
     background-color: #fff;
     color: #000;
+    margin-right: 16px;
+}
+
+main #content_game #initial #info {
+    flex: 1;
+    text-align: center;
+}
+
+main #content_game #initial #audio svg{
+    width: 30px;
+}
+
+main #content_game #initial #ranking {
+    margin-right: 0;
+}
+
+main #content_game #initial #ranking svg {
+    width: 28px;
+    height: 32px;
+    fill: #000;
+    transform: translateY(3px);
+}
+
+main  #bio{
+    position: absolute;
+    border: 2px solid #f6f6f6;
+    background-color: #f6f6f6;
+    padding: ;
+    border-radius: 40px 0 0 40px;
+    width: 50px;
+    height: 50px;
+    bottom: 0;
+    right: 20%;
+    transform: rotate(90deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 main #content_game #game_win {
@@ -192,6 +234,146 @@ main #content_game #game_win img {
     width: 380px;
 }
 
+
+main #bio svg {
+    width: 18px;
+    height: 18px;
+    fill: #000;
+    padding: 8px;
+    transform: translateY(2px);
+    animation: moveLeft .5s alternate-reverse infinite ease-in-out;
+}
+
+main #content_game #game {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+main #content_game #game #timer {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #444;
+    align-self: flex-end;
+    transform: translateY(-65px);
+
+}
+
+main #content_game #game #timer svg{
+    width: 2rem;
+    height: 2rem;
+    fill: rgb(7, 7, 85);
+    margin-right: 8px;
+}
+
+
+
+main #content_game #game #tabuleiro  {
+    width: 100%;
+    min-width: 190px;
+    max-width: 600px;
+    display: flex;
+    border-radius: 12px;
+    background-color: rgba(0, 0, 255, 0.349);
+    padding: 0 1rem;
+    position: relative;
+
+}
+
+main #content_game #game #tabuleiro .column{
+    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+    cursor: pointer;
+    transition: background-color 200ms;
+}
+
+main #content_game #game #tabuleiro .column:hover {
+    background-color: darkblue;
+}
+
+main #content_game #game #tabuleiro .column:hover::before {
+    content: "";
+    width: 7.5vw;
+    max-width: 60px;
+    height: 7.5vw;
+    max-height: 60px;
+    border-radius: 50%;
+    background-color: var(--background_color_column_indicator);
+    position: absolute;
+    top: -8.5vw;
+}   
+
+
+main #content_game #game #tabuleiro .column div{
+    width: 9vw;
+    max-width: 60px;
+    height: 9vw;
+    max-height: 60px;
+    position: relative;
+}
+
+main #content_game #game #tabuleiro .column div.red::before{
+    background-color: red;
+}
+
+main #content_game #game #tabuleiro .column div.blue::before{
+    background-color: blue;
+}
+
+main #content_game #game #tabuleiro .column div::before {
+    content: "";
+    position: absolute;
+    width: 85%;
+    height: 85%;
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255);
+    box-shadow:  5px 5px 12px rgba(6, 6, 116, 0.616),
+                 -3px -3px 6px #ffffff65,
+                 inset 4px 4px 8px rgba(0, 0, 0, 0.418);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+main #content_game #game #players{
+    margin-top: 1rem;
+    width: 100%;
+    min-width: 190px;
+    max-width: 600px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main #content_game #game #players svg {
+    width: 1.5rem;
+    fill: rgba(245, 245, 245, 0.212);
+    stroke-width: 2px;
+    stroke: rgb(3, 2, 2);
+    transition: transform 400ms ease-in-out;
+}
+
+main #content_game #game #players.rotate svg {
+    transform: rotate(180deg);
+}
+
+main #content_game #game #players #player_one_name {
+    color: blue;
+    text-transform: uppercase;
+}
+
+main #content_game #game #players #player_two_name {
+    color: red;
+    text-transform: uppercase;
+}
 /* INICIAL */
   
 /* FOOTER */
@@ -218,7 +400,17 @@ footer{}
 }
 
 @media only screen and (min-width: 768px){
+    main #content_game #game #tabuleiro .column:hover::before {
+        top: -70px;
+    }   
 
+    main #content_game #game #players{
+        font-size: 1.5rem;
+    }
+
+    main #content_game #game #players svg {
+        width: 2rem;
+    }
 }
 
 @media only screen and (min-width: 1200px) {
