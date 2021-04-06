@@ -16,6 +16,7 @@ const inputPlayerTwo = document.getElementById('player_two');
 const btnStartGame = document.getElementById('submit_game');
 const containerNamePlayerOneInGame = document.getElementById('player_one_name');
 const containerNamePlayerTwoInGame = document.getElementById('player_two_name');
+let root = document.querySelector(':root');
 
 let namePlayerOne
 let namePlayerTwo
@@ -29,20 +30,25 @@ let namePlayerTwo
 
 /* function revezamento de turno */
 function put_piece(row_selected){
-    for(let column = game_table.length -1; column >= 0; column--){
-        if(game_table[row_selected][column] == 0){
-            if(first_player_turn){
-                game_table[row_selected][column] = "blue"
-                first_player_turn = false
-            }else{
-                game_table[row_selected][column] = "red"
-                first_player_turn = true
-            }
-            console.log(game_table)
-            create_table();
-            break;
-        }
-    }
+  let arrow_div = document.getElementById("players")
+  for(let column = game_table.length -1; column >= 0; column--){
+      if(game_table[row_selected][column] == 0){
+          if(first_player_turn){
+              game_table[row_selected][column] = "blue"
+              first_player_turn = false
+              arrow_div.classList.add("rotate")
+              root.style.setProperty("--background_color_column_indicator", "red");
+          }else{
+              game_table[row_selected][column] = "red"
+              first_player_turn = true
+              arrow_div.classList.remove("rotate")
+              root.style.setProperty("--background_color_column_indicator", "blue");
+          }
+          console.log(game_table)
+          create_table();
+          break;
+      }
+  }
 }
 /* function revezamento de turno */
 
@@ -86,15 +92,6 @@ function checkVertical() {
   return output;
 }
 function checkDiagonal() {
-  let game_table = [
-    [0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 1, 0, 1],
-    [0, 0, 1, 0, 1, 0],
-    [0, 0, 0, 1, 0, 1],
-    [0, 0, 1, 0, 0, 0],
-    [0, 0, 0, 0, 0, 1],
-    [0, 0, 0, 0, 0, 0]
-  ];
   let output = false;
   for (let row = 3; row < game_table.length; row++) {
     for (let col = 3; col < game_table[0].length; col++) {
@@ -106,30 +103,22 @@ function checkDiagonal() {
       ) {
         output = true;
       }
+    }
+  }
+  for(let row = 3; row < game_table.length; row++){
+    for(let col = game_table[0].length; col >= 0; col--){
       if (
         game_table[row - 3][col] === game_table[row - 2][col - 1] &&
         game_table[row - 2][col - 1] === game_table[row - 1][col - 2] &&
-        game_table[row - 1][col - 2] === game_table[row][col - 3] &&
-        game_table[row - 3][col - 3] !== 0
-      ) {
-        output = true;
-      }
-      console.log(row - 3, col - 3);
-      // console.log(row, col)
+        game_table[row - 1][col - 2] === game_table[row][col - 3] && game_table[row -3][col]
+        ) {
+          output = true;
+        }
+      
     }
   }
-  console.log(
-    game_table[1][5] === game_table[2][4] &&
-      game_table[2][4] === game_table[3][3] &&
-      game_table[3][3] === game_table[4][2]
-  );
-  console.log(game_table[1][5]);
-  console.log(game_table[2][4]);
-  console.log(game_table[3][3]);
-  console.log(game_table[4][2]);
-  console.log(output);
+  return output;
 }
-checkDiagonal();
 /* function verificar resultado da partida */ 
 
 
