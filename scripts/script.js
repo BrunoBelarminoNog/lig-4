@@ -16,6 +16,7 @@ const inputPlayerTwo = document.getElementById('player_two');
 const btnStartGame = document.getElementById('submit_game');
 const containerNamePlayerOneInGame = document.getElementById('player_one_name');
 const containerNamePlayerTwoInGame = document.getElementById('player_two_name');
+const btnRestartGame = document.querySelector('.reset_game')
 let root = document.querySelector(':root');
 
 let namePlayerOne
@@ -206,4 +207,13 @@ btnStartGame.addEventListener('click', (event) => {
 
   containerHomePage.classList.add('hidden');
   containerGamePage.classList.remove('hidden');
+})
+
+function RestartGame() {
+  let btnReset = document.querySelectorAll(".reset_game");
+ 
+}
+
+btnRestartGame.addEventListener('click', ()=> {
+
 })
