@@ -75,15 +75,6 @@ function checkVertical() {
   return output;
 }
 function checkDiagonal() {
-  let game_table = [
-    [0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 1, 0, 1],
-    [0, 0, 1, 0, 1, 0],
-    [0, 0, 0, 1, 0, 1],
-    [0, 0, 1, 0, 0, 0],
-    [0, 0, 0, 0, 0, 1],
-    [0, 0, 0, 0, 0, 0]
-  ];
   let output = false;
   for (let row = 3; row < game_table.length; row++) {
     for (let col = 3; col < game_table[0].length; col++) {
@@ -95,30 +86,22 @@ function checkDiagonal() {
       ) {
         output = true;
       }
+    }
+  }
+  for(let row = 3; row < game_table.length; row++){
+    for(let col = game_table[0].length; col >= 0; col--){
       if (
         game_table[row - 3][col] === game_table[row - 2][col - 1] &&
         game_table[row - 2][col - 1] === game_table[row - 1][col - 2] &&
-        game_table[row - 1][col - 2] === game_table[row][col - 3] &&
-        game_table[row - 3][col - 3] !== 0
-      ) {
-        output = true;
-      }
-      console.log(row - 3, col - 3);
-      // console.log(row, col)
+        game_table[row - 1][col - 2] === game_table[row][col - 3] && game_table[row -3][col]
+        ) {
+          output = true;
+        }
+      
     }
   }
-  console.log(
-    game_table[1][5] === game_table[2][4] &&
-      game_table[2][4] === game_table[3][3] &&
-      game_table[3][3] === game_table[4][2]
-  );
-  console.log(game_table[1][5]);
-  console.log(game_table[2][4]);
-  console.log(game_table[3][3]);
-  console.log(game_table[4][2]);
-  console.log(output);
+  return output;
 }
-checkDiagonal();
 /* function verificar resultado da partida */ 
 
 
