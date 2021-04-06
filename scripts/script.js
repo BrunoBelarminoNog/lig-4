@@ -182,13 +182,13 @@ function checkWin(){
 }
 
 function checkDraw(){
-  let output = false
-  game_table.map((element) => {
-    if(! element.includes(0)){
-      output = true
+  let control = [false, false, false, false, false, false, false]
+  game_table.forEach((element, index) => {
+    if(!element.includes(0)){
+      control[index] = true
     }
   })
-  return output
+  return control.includes(false) ? false : true
 }
 /* function verificar resultado da partida */ 
 
