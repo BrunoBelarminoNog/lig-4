@@ -216,6 +216,24 @@ main  #bio{
     justify-content: center;
 }
 
+main #content_game #game_win {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    margin: auto;
+}
+
+main #content_game #game_win h1 {
+    font-size: 5rem;
+    text-align: center;
+    text-shadow:#000 4px -4px, #000 -4px 4px, #000 4px 4px, #000 -4px -4px;
+    color: rgb(169, 156, 248);
+}
+
+main #content_game #game_win img {
+    width: 380px;
+}
+
 
 main #bio svg {
     width: 18px;
