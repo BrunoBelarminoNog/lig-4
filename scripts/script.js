@@ -16,6 +16,7 @@ const inputPlayerTwo = document.getElementById('player_two');
 const btnStartGame = document.getElementById('submit_game');
 const containerNamePlayerOneInGame = document.getElementById('player_one_name');
 const containerNamePlayerTwoInGame = document.getElementById('player_two_name');
+const btnRestartGame = document.querySelector('.reset_game')
 const containerGameWin = document.getElementById('game_win')
 const containerGameDraw = document.getElementById('game_draw')
 let root = document.querySelector(':root');
@@ -125,6 +126,13 @@ function checkWin(){
   let vertical = checkVertical()
   let horizontal = checkHorizontal()
   let diagonal = checkDiagonal()
+  let result = document.createElement('h1')
+  if((vertical || horizontal || diagonal) === true){
+    if(first_player_turn){
+      result.innerText = `${namePlayerOne}`
+    }
+    else{
+      result.innerText = `${namePlayerTwo}`
   let draw = checkDraw()
   let result = document.createElement('h1')
   if((vertical || horizontal || diagonal) === true){
@@ -136,6 +144,7 @@ function checkWin(){
     }
     containerGameWin.appendChild(result)
     containerGamePage.classList.add('hidden');
+    document.getElementById('game_win').classList.remove('hidden')
     containerGameWin.classList.remove('hidden')
   }
   if(draw){
@@ -224,4 +233,13 @@ btnStartGame.addEventListener('click', (event) => {
 
   containerHomePage.classList.add('hidden');
   containerGamePage.classList.remove('hidden');
+})
+
+function RestartGame() {
+  let btnReset = document.querySelectorAll(".reset_game");
+ 
+}
+
+btnRestartGame.addEventListener('click', ()=> {
+
 })

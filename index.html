@@ -8,7 +8,7 @@
     <title>Lig-4</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@300;400;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./styles/style.css">
 </head>
 
 <body>
@@ -22,7 +22,7 @@
         <div class="container">
 
             <div id="content_game">
-                <section id="initial" class="hidden">
+                <section id="initial">
                     <h1>Lig<span>4</span></h1>
 
                     <div class="input_players">
@@ -116,11 +116,13 @@
                     </div>
                 </section>
  
-                <section id="game_win">
-                    <h1>Player</h1>
-                    <img src="./img/winner.gif" alt="winner">
+                <section id="game_win" class="hidden">
+                    <img src="./assets/images/winner.gif" alt="winner">
+                    <button type="button" class="reset_game">Novo Jogo</button>
                 </section>
 
+                <section id="game_empate" class="hidden">
+                    <button type="button" class="reset_game">Novo Jogo</button>
                 <section id="game_draw" class="hidden">
 
                 </section>
@@ -155,8 +157,8 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <script src="./set_particle.js"></script>
-    <script src="./script.js"></script>
+    <script src="./scripts/set_particle.js"></script>
+    <script src="./scripts/script.js"></script>
 </body>
 
 </html>
