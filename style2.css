@@ -1,0 +1,155 @@
+/*
+--------------------------------------------
+ESTRUTURAÇÃO BASE
+--------------------------------------------
+**** DECLARAÇÃO DE VARIÁVEIS
+**** ESTILOS GERAIS
+**** BODY
+**** HEADER
+**** FOOTER
+**** PÁGINA INICIAL
+**** EXTRAS
+**** @MEDIA
+*/
+
+/* VARIÁVEIS */
+:root{}
+/* VARIÁVEIS */
+  
+  
+/* GERAL */
+html, body, figure, div, input, textarea, p, h1, h2, h3, h4, h5, h6, ul, ol, li, a, button, form, img, span {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Londrina Solid', cursive;
+    list-style: none;
+    text-decoration: none;
+}
+
+.container {
+    width: 90vw;
+    max-width: 1020px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/* GERAL */
+  
+/* HTML */
+html{}
+/* HTML */
+  
+/* BODY */
+body{
+    min-height: 100vh;
+    background-color: #FA8BFF;
+    background-image: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);
+    background-attachment: fixed;
+}    
+
+/* BODY */
+  
+/* HEADER */
+header{}
+/* HEADER */
+
+/* INICIAL */
+main {
+    width: 100%;
+    height: 100vh;
+}
+
+main .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main #content_win {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: inherit;
+    color: #fff;
+    border-radius: 2rem;
+    z-index: 10;
+    position: relative;
+    overflow: hidden;
+    padding: 1rem;
+}
+
+main #content_win:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(250, 250, 250, 0.4);
+    backdrop-filter: blur(8px);
+    z-index: -1;
+}
+
+main #content_win #game_win h1 {
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    text-shadow:#000 4px -4px, #000 -4px 4px, #000 4px 4px, #000 -4px -4px;
+    transform: rotate(-20deg);
+    color: rgb(169, 156, 248);
+}
+
+main #content_win #game_win h1 span {
+    font-size: 6rem;
+    display: inline-block;
+    transform: rotate(18deg) translateY(30px) translateX(5px);
+    color: rgb(123, 251, 255);
+}
+
+/* INICIAL */
+  
+/* FOOTER */
+footer{}
+/* FOOTER */
+  
+
+/* EXTRAS */
+
+/* para estilizar a scrollbar */
+::-webkit-scrollbar{}
+::-webkit-scrollbar-button{}
+::-webkit-scrollbar-track{}
+::-webkit-scrollbar-track-piece{}
+::-webkit-scrollbar-thumb{}
+::-webkit-scrollbar-corner{}
+::-webkit-resizer{}
+/* EXTRAS */
+  
+
+/* MEDIA QUERIES */
+@media only screen and (min-width: 375px){
+
+}
+
+@media only screen and (min-width: 768px){
+
+}
+
+@media only screen and (min-width: 1200px) {
+
+}
+/* MEDIA QUERIES */
