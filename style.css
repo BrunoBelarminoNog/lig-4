@@ -108,6 +108,8 @@ main #content_game:before {
     z-index: -1;
 }
 
+main #content_game #initial 
+
 main #content_game #initial h1{
     font-size: 4rem;
     text-align: center;
@@ -254,11 +256,14 @@ main #content_game #game #timer svg{
 
 main #content_game #game #tabuleiro  {
     width: 100%;
-    max-width: 750px;
+    min-width: 190px;
+    max-width: 600px;
     display: flex;
     border-radius: 12px;
     background-color: rgba(0, 0, 255, 0.349);
     padding: 0 1rem;
+    position: relative;
+
 }
 
 main #content_game #game #tabuleiro .column{
@@ -269,7 +274,6 @@ main #content_game #game #tabuleiro .column{
     align-items: center;
     padding: 1rem 0;
     cursor: pointer;
-    position: relative;
     transition: background-color 200ms;
 }
 
@@ -279,20 +283,22 @@ main #content_game #game #tabuleiro .column:hover {
 
 main #content_game #game #tabuleiro .column:hover::before {
     content: "";
-    width: 8vw;
-    height: 8vw;
+    width: 7.5vw;
+    max-width: 60px;
+    height: 7.5vw;
+    max-height: 60px;
     border-radius: 50%;
     background-color: rgb(0, 0, 0);
     position: absolute;
-    top: -40px;
+    top: -8.5vw;
 }   
 
 
 main #content_game #game #tabuleiro .column div{
-    width: 10vw;
-    max-width: 80px;
-    height: 10vw;
-    max-width: 80px;
+    width: 9vw;
+    max-width: 60px;
+    height: 9vw;
+    max-height: 60px;
     position: relative;
 }
 
@@ -322,6 +328,8 @@ main #content_game #game #tabuleiro .column div::before {
 main #content_game #game #players{
     margin-top: 1rem;
     width: 100%;
+    min-width: 190px;
+    max-width: 600px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -329,6 +337,14 @@ main #content_game #game #players{
 
 main #content_game #game #players svg {
     width: 1.5rem;
+    fill: rgba(245, 245, 245, 0.212);
+    stroke-width: 2px;
+    stroke: rgb(3, 2, 2);
+    transition: transform 400ms ease-in-out;
+}
+
+main #content_game #game #players.rotate svg {
+    transform: rotate(180deg);
 }
 
 main #content_game #game #players #player_one_name {
@@ -366,7 +382,17 @@ footer{}
 }
 
 @media only screen and (min-width: 768px){
+    main #content_game #game #tabuleiro .column:hover::before {
+        top: -70px;
+    }   
 
+    main #content_game #game #players{
+        font-size: 1.5rem;
+    }
+
+    main #content_game #game #players svg {
+        width: 2rem;
+    }
 }
 
 @media only screen and (min-width: 1200px) {
