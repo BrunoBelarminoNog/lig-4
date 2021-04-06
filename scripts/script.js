@@ -146,6 +146,7 @@ function checkWin(){
     containerGameDraw.classList.remove('hidden')
   }
 }
+
 function checkDraw(){
   let output = false
   game_table.map((element) => {
