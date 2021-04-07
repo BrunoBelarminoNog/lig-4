@@ -18,6 +18,12 @@ const containerGameWin = document.getElementById('game_win')
 const containerGameDraw = document.getElementById('game_draw')
 const containerInfo = document.getElementById('info_div')
 const containerRanking = document.getElementById('ranking_div')
+const SoundOn = document.querySelector('#audio #audio_on');
+const SoundOff = document.querySelector('#audio #audio_off');
+const soundGame = new Audio("./assets/sounds/GAME-game-level-music.wav");
+const soundDraw = new Audio("./assets/sounds/DRAW-player-losing-or-failing.wav");
+const soundWinner = new Audio("./assets/sounds/WINNER-completion-of-a-level.wav");
+const soundBall = new Audio("./assets/sounds/BALL--game-ball-tap.wav");
 let root = document.querySelector(':root');
 
 let namePlayerOne
