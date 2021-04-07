@@ -105,29 +105,66 @@ function storageTimes(){
   let diagonal = checkDiagonal()
   if(vertical || horizontal || diagonal){
     let time = temp()
-    console.log(time)
     if(!first_player_turn){
       playerOne['name'] = namePlayerOne
       if(playerOne['bestTime'].length < 3){
         playerOne['bestTime'].push(time)
+        orderTimes(playerOne['bestTime'])
       }
       else{
         playerOne['bestTime'].pop()
         playerOne['bestTime'].push(time)
+        orderTimes(playerOne['bestTime'])
       }
+      printRanking(playerOne['name'], playerOne['bestTime'])
+      return playerOne
     }
     else{
       playerTwo['name'] = namePlayerTwo
       if(playerTwo['bestTime'].length < 3){
         playerTwo['bestTime'].push(time)
+        orderTimes(playerTwo['bestTime'])
       }
       else{
         playerTwo['bestTime'].pop()
         playerTwo['bestTime'].push(time)
+        orderTimes(playerTwo['bestTime'])
       }
+      printRanking(playerTwo['name'], playerTwo['bestTime'])
+      return playerTwo
     }
   }
-  console.log(playerOne)
+}
+function orderTimes(arr){
+  let sortedArr = []
+  for(let i = 0; i < arr.length; i++){
+     sortedArr.push(arr[i].split(':').join(''))
+  }
+  sortedArr.sort((a,b) => a - b)
+  for(let i = 0; i < sortedArr.length;i++){
+    sortedArr[i] = sortedArr[i].split('')
+    sortedArr[i].splice(2,0, ':')
+    sortedArr[i] = sortedArr[i].join('')
+  }
+  return sortedArr
+}
+function printRanking(player,winner){
+  let first_time = document.createElement('div')
+  let second_time = document.createElement('div')
+  let third_time = document.createElement('div')
+  first_time.innerText = `${player}-${winner[0]}`
+  second_time.innerText = `${player}-${winner[1]}`
+  third_time.innerText = `${player}-${winner[2]}`
+  console.log(winner.length)
+  if(winner.length === 1){
+    containerRanking.appendChild(first_time)
+  }
+  if(winner.length === 2){
+    containerRanking.appendChild(second_time)
+  }
+  if(winner.length === 3){
+    containerRanking.appendChild(third_time)
+  }
 }
 /* function armazenar os tempos das partidas e nome dos vencedores */
 
@@ -209,12 +246,15 @@ function checkWin(){
     }
     containerGamePage.classList.add('hidden');
     containerGameWin.classList.remove('hidden')
+    storageTimes()
+    resetaCronometro()
   }
   if(draw){
     containerGamePage.classList.add('hidden');
     containerGameDraw.classList.remove('hidden')
+    storageTimes()
+    resetaCronometro()
   }
-  storageTimes()
 }
 
 function checkDraw(){
