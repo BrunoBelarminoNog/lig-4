@@ -96,25 +96,44 @@ function put_piece(row_selected){
 
 /* function armazenar os tempos das partidas e nome dos vencedores */
 /* criando objeto que armazena os 3 melhores tempos */
-let ranking = new Object()
-ranking.player = ''
-ranking.bestTime = []
+class ranking {
+  constructor(player){
+    this.name = player
+    this.bestTime = []
+  }
+}
+let playerOne = new ranking(namePlayerOne)
+let playerTwo = new ranking(namePlayerTwo)
 /* criando objeto que armazena os 3 melhores tempos */
-console.log(ranking)
 function storageTimes(){
   let vertical = checkVertical()
   let horizontal = checkHorizontal()
   let diagonal = checkDiagonal()
   if(vertical || horizontal || diagonal){
     let time = temp()
-    localStorage.setItem('time', time)
     console.log(time)
-    if(first_player_turn){
-      ranking['player'] = namePlayerOne
-      ranking['bestTime'].push(time)
-      console.log(ranking)
+    if(!first_player_turn){
+      playerOne['name'] = namePlayerOne
+      if(playerOne['bestTime'].length < 3){
+        playerOne['bestTime'].push(time)
+      }
+      else{
+        playerOne['bestTime'].pop()
+        playerOne['bestTime'].push(time)
+      }
+    }
+    else{
+      playerTwo['name'] = namePlayerTwo
+      if(playerTwo['bestTime'].length < 3){
+        playerTwo['bestTime'].push(time)
+      }
+      else{
+        playerTwo['bestTime'].pop()
+        playerTwo['bestTime'].push(time)
+      }
     }
   }
+  console.log(playerOne)
 }
 /* function armazenar os tempos das partidas e nome dos vencedores */
 
@@ -202,6 +221,7 @@ function checkWin(){
     containerGamePage.classList.add('hidden');
     containerGameDraw.classList.remove('hidden')
   }
+  storageTimes()
 }
 
 function checkDraw(){
