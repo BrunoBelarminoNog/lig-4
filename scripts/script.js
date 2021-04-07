@@ -17,11 +17,13 @@ const btnStartGame = document.getElementById('submit_game');
 const btnAjuda = document.getElementById('info');
 const btnClose = document.getElementById('close');
 const btnRestartGame = document.querySelector('.reset_game');
+const btnRanking = document.getElementById('ranking');
 const containerNamePlayerOneInGame = document.getElementById('player_one_name');
 const containerNamePlayerTwoInGame = document.getElementById('player_two_name');
 const containerGameWin = document.getElementById('game_win')
 const containerGameDraw = document.getElementById('game_draw')
 const containerInfo = document.getElementById('info_div')
+const containerRanking = document.getElementById('ranking_div')
 let root = document.querySelector(':root');
 
 let namePlayerOne
