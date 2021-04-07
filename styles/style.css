@@ -257,7 +257,36 @@ main #content_game #game_win button {
     grid-area: btn;
 }
 
+main #content_game #credits {
+    width: 40%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    color: black;
+    font-size: 1.3rem;
+}
 
+main #content_game #credits h2 {
+    margin: 2px 0 15px 0;
+    text-align: center;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 5px;
+}
+
+span {
+    align-self: flex-end;
+}
+
+main #content_game #credits a {
+    text-decoration: none;
+    color: black;
+    margin: 0 5px 0 5px;
+}
 
 main #bio svg {
     width: 18px;
