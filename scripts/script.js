@@ -35,19 +35,6 @@ let namePlayerTwo
 
 /* eventos de click */
 
-// function effectsSounds(effect) {
-//   if (!btnSoundOn) {
-//     soundOn.play();
-//   }
-
-//   if (effect === "ball") {
-//     soundBall.play()
-//   } else if (effect === "draw") {
-//       soundDraw.play()
-//   } else if (effect === "win") {
-//       soundWinner.play()
-//   }
-// }
 
 
 /* cronometro */
@@ -230,12 +217,15 @@ function checkWin(){
     }
     containerGamePage.classList.add('hidden');
     containerGameWin.classList.remove('hidden')
+    soundWinner.play()
   }
   if(draw){
     containerGamePage.classList.add('hidden');
     containerGameDraw.classList.remove('hidden')
+    soundDraw.play()
   }
   storageTimes()
+
 }
 
 function checkDraw(){
