@@ -270,9 +270,11 @@ function create_table(){
             }
             if(game_table[column][row] == "blue"){
                 div.classList.add("blue")
+                soundBall.play()
             }
             if(game_table[column][row] == "red"){
                 div.classList.add("red")
+                soundBall.play()
             }
             column_div.appendChild(div)
         }
