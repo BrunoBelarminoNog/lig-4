@@ -94,9 +94,29 @@ function put_piece(row_selected){
 /* function revezamento de turno */
 
 
-/* function verificar ou bloquear movimento em coluna cheia */
-
-/* function verificar ou bloquear movimento em coluna cheia */
+/* function armazenar os tempos das partidas e nome dos vencedores */
+/* criando objeto que armazena os 3 melhores tempos */
+let ranking = new Object()
+ranking.player = ''
+ranking.bestTime = []
+/* criando objeto que armazena os 3 melhores tempos */
+console.log(ranking)
+function storageTimes(){
+  let vertical = checkVertical()
+  let horizontal = checkHorizontal()
+  let diagonal = checkDiagonal()
+  if(vertical || horizontal || diagonal){
+    let time = temp()
+    localStorage.setItem('time', time)
+    console.log(time)
+    if(first_player_turn){
+      ranking['player'] = namePlayerOne
+      ranking['bestTime'].push(time)
+      console.log(ranking)
+    }
+  }
+}
+/* function armazenar os tempos das partidas e nome dos vencedores */
 
 
 /* function verificar resultado da partida */ 
