@@ -159,7 +159,8 @@ function checkWin(){
   let draw = checkDraw()
   let result = document.getElementById('game_win_player')
   if((vertical || horizontal || diagonal) === true){
-    if(first_player_turn){
+    result.innerHTML = ''
+    if(!first_player_turn){
       result.innerHTML = `${namePlayerOne}`
     }
     else{
