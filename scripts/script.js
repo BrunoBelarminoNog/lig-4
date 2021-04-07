@@ -1,11 +1,5 @@
 /* variaveis e constantes */
-let game_table = [[0,0,0,0,0,0],
-                  [0,0,0,0,0,0],
-                  [0,0,0,0,0,0],
-                  [0,0,0,0,0,0],
-                  [0,0,0,0,0,0],
-                  [0,0,0,0,0,0],
-                  [0,0,0,0,0,0]]
+let game_table = []
 const game_screen = document.getElementById("tabuleiro")
 let first_player_turn = true
 
@@ -17,11 +11,13 @@ const btnStartGame = document.getElementById('submit_game');
 const btnAjuda = document.getElementById('info');
 const btnClose = document.getElementById('close');
 const btnRestartGame = document.querySelector('.reset_game');
+const btnRanking = document.getElementById('ranking');
 const containerNamePlayerOneInGame = document.getElementById('player_one_name');
 const containerNamePlayerTwoInGame = document.getElementById('player_two_name');
 const containerGameWin = document.getElementById('game_win')
 const containerGameDraw = document.getElementById('game_draw')
 const containerInfo = document.getElementById('info_div')
+const containerRanking = document.getElementById('ranking_div')
 let root = document.querySelector(':root');
 
 let namePlayerOne
@@ -92,9 +88,48 @@ function put_piece(row_selected){
 /* function revezamento de turno */
 
 
-/* function verificar ou bloquear movimento em coluna cheia */
-
-/* function verificar ou bloquear movimento em coluna cheia */
+/* function armazenar os tempos das partidas e nome dos vencedores */
+/* criando objeto que armazena os 3 melhores tempos */
+class ranking {
+  constructor(player){
+    this.name = player
+    this.bestTime = []
+  }
+}
+let playerOne = new ranking(namePlayerOne)
+let playerTwo = new ranking(namePlayerTwo)
+/* criando objeto que armazena os 3 melhores tempos */
+function storageTimes(){
+  let vertical = checkVertical()
+  let horizontal = checkHorizontal()
+  let diagonal = checkDiagonal()
+  if(vertical || horizontal || diagonal){
+    let time = temp()
+    console.log(time)
+    if(!first_player_turn){
+      playerOne['name'] = namePlayerOne
+      if(playerOne['bestTime'].length < 3){
+        playerOne['bestTime'].push(time)
+      }
+      else{
+        playerOne['bestTime'].pop()
+        playerOne['bestTime'].push(time)
+      }
+    }
+    else{
+      playerTwo['name'] = namePlayerTwo
+      if(playerTwo['bestTime'].length < 3){
+        playerTwo['bestTime'].push(time)
+      }
+      else{
+        playerTwo['bestTime'].pop()
+        playerTwo['bestTime'].push(time)
+      }
+    }
+  }
+  console.log(playerOne)
+}
+/* function armazenar os tempos das partidas e nome dos vencedores */
 
 
 /* function verificar resultado da partida */ 
@@ -163,15 +198,15 @@ function checkWin(){
   let horizontal = checkHorizontal()
   let diagonal = checkDiagonal()
   let draw = checkDraw()
-  let result = document.createElement('h1')
+  let result = document.getElementById('game_win_player')
   if((vertical || horizontal || diagonal) === true){
-    if(first_player_turn){
+    result.innerHTML = ''
+    if(!first_player_turn){
       result.innerHTML = `${namePlayerOne}`
     }
     else{
       result.innerHTML = `${namePlayerTwo}`
     }
-    containerGameWin.appendChild(result)
     containerGamePage.classList.add('hidden');
     containerGameWin.classList.remove('hidden')
   }
@@ -179,6 +214,7 @@ function checkWin(){
     containerGamePage.classList.add('hidden');
     containerGameDraw.classList.remove('hidden')
   }
+  storageTimes()
 }
 
 function checkDraw(){
@@ -202,6 +238,8 @@ function init_game(){
                   [0,0,0,0,0,0],
                   [0,0,0,0,0,0],
                   [0,0,0,0,0,0]]
+    first_player_turn = true
+    root.style.setProperty("--background_color_column_indicator", "blue");
     create_table()
 }
 /* function reinicar game */
@@ -246,21 +284,22 @@ btnStartGame.addEventListener('click', (event) => {
   if(inputPlayerOne.value === "" || inputPlayerTwo.value === "") {
     event.preventDefault()
     alert('Preencha o campo de nomes')
+  } else{
+    namePlayerOne = inputPlayerOne.value;
+    namePlayerTwo = inputPlayerTwo.value;
+  
+    inputPlayerOne.value = ""
+    inputPlayerTwo.value = ""
+  
+    containerNamePlayerOneInGame.innerHTML = `${namePlayerOne}`;
+    containerNamePlayerTwoInGame.innerHTML = `${namePlayerTwo}`;
+  
+    init_game()
+  
+    containerHomePage.classList.add('hidden');
+    containerGamePage.classList.remove('hidden');
+
   }
-
-  namePlayerOne = inputPlayerOne.value;
-  namePlayerTwo = inputPlayerTwo.value;
-
-  inputPlayerOne.value = ""
-  inputPlayerTwo.value = ""
-
-  containerNamePlayerOneInGame.innerHTML = `${namePlayerOne}`;
-  containerNamePlayerTwoInGame.innerHTML = `${namePlayerTwo}`;
-
-  init_game()
-
-  containerHomePage.classList.add('hidden');
-  containerGamePage.classList.remove('hidden');
 })
 
 btnRestartGame.addEventListener('click', ()=> {

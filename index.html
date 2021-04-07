@@ -26,8 +26,8 @@
                     <h1>Lig<span>4</span></h1>
 
                     <div class="input_players">
-                        <input type="text" placeholder="Nome do Jogador 1" id="player_one">
-                        <input type="text" placeholder="Nome do Jogador 2" id="player_two">
+                        <input type="text" placeholder="Nome do Jogador 1" id="player_one" required>
+                        <input type="text" placeholder="Nome do Jogador 2" id="player_two" required>
                     </div>
                     <button type="button" id="submit_game">Novo Jogo</button>
 
@@ -61,7 +61,7 @@
                         <button id="info">
                                 Ajuda
                         </button>
-                        <div id="ranking">
+                        <button id="ranking">
                             <div>
                                 <span>
                                     <svg height="512pt" viewBox="0 0 512 512" width="512pt"
@@ -78,7 +78,7 @@
                                     </svg>
                                 </span>
                             </div>
-                        </div>
+                        </button>
 
                     </div>
                 </section>
@@ -115,6 +115,7 @@
                 </section>
 
                 <section id="game_win" class="hidden">
+                    <h1 id="game_win_player"></h1>
                     <img src="./assets/images/winner.gif" alt="winner">
                     <button type="button" class="reset_game">Novo Jogo</button>
                 </section>
@@ -220,6 +221,7 @@
                     </ul>
                 </article>
             </div>
+            <div id="ranking_div"></div>
         </div>
     </main>
 
