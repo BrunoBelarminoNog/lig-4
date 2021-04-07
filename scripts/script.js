@@ -73,15 +73,15 @@ function put_piece(row_selected){
   for(let column = game_table.length -1; column >= 0; column--){
       if(game_table[row_selected][column] == 0){
           if(first_player_turn){
-              game_table[row_selected][column] = "blue"
+              game_table[row_selected][column] = "red"
               first_player_turn = false
               arrow_div.classList.add("rotate")
-              root.style.setProperty("--background_color_column_indicator", "red");
+              root.style.setProperty("--background_color_column_indicator", "#7fe9a8e8");
           }else{
-              game_table[row_selected][column] = "red"
+              game_table[row_selected][column] = "blue"
               first_player_turn = true
               arrow_div.classList.remove("rotate")
-              root.style.setProperty("--background_color_column_indicator", "blue");
+              root.style.setProperty("--background_color_column_indicator", "#e79bfa");
           }
           console.log(game_table)
           create_table();
