@@ -18,8 +18,8 @@ const containerGameWin = document.getElementById('game_win')
 const containerGameDraw = document.getElementById('game_draw')
 const containerInfo = document.getElementById('info_div')
 const containerRanking = document.getElementById('ranking_div')
-const SoundOn = document.querySelector('#audio #audio_on');
-const SoundOff = document.querySelector('#audio #audio_off');
+const btnSoundOn = document.getElementById('audio_on');
+const btnSoundOff = document.getElementById('audio_off');
 const soundGame = new Audio("./assets/sounds/GAME-game-level-music.wav");
 const soundDraw = new Audio("./assets/sounds/DRAW-player-losing-or-failing.wav");
 const soundWinner = new Audio("./assets/sounds/WINNER-completion-of-a-level.wav");
@@ -31,9 +31,26 @@ let namePlayerTwo
 /* variaveis e constantes */
 
 
-/* eventos de click  */
+/* eventos de click */
 
-/* eventos de click  */
+/* eventos de click */
+
+// function effectsSounds(effect) {
+//   if () {
+//       return
+//   }
+
+//   if (effect === "click") {
+//       soundOn.play();
+//   } else if (effect === "draw") {
+//       soundDraw.play()
+//   } else if (effect === "win") {
+//       soundWinner.play()
+//   } else if (effect === "ball") {
+//       soundBall.play()
+//   }
+// }
+
 
 /* cronometro */
 let segundo = 0;
@@ -317,6 +334,17 @@ btnRestartGame.addEventListener('click', ()=> {
 btnAjuda.addEventListener('click', () => {
   containerInfo.classList.remove('hidden')
 })
+
 btnClose.addEventListener('click', () => {
   containerInfo.classList.add('hidden')
+})
+
+btnSoundOn.addEventListener('click', () => {
+  btnSoundOff.classList.remove('hidden')
+  btnSoundOn.classList.add('hidden')
+})
+
+btnSoundOff.addEventListener('click', () => {
+  btnSoundOn.classList.remove('hidden')
+  btnSoundOff.classList.add('hidden')
 })
