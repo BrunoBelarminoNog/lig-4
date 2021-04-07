@@ -33,7 +33,7 @@ let namePlayerTwo
 let segundo = 0;
 let minuto = 0;
 let cronometro;
-
+let timer = 0
 function iniciaCronometro() {
     clearInterval(cronometro)
     cronometro = setInterval(() => { temp(); }, 1000);
@@ -43,13 +43,12 @@ function resetaCronometro() {
     clearInterval(cronometro);
     minuto = 0;
     segundo = 0;
-
     document.getElementById('cronometro').innerText = '00:00';
 }
 
 function temp() {
     segundo++
-
+    timer++
     if (segundo == 60) {
         segundo = 0
         minuto++
@@ -89,7 +88,26 @@ function put_piece(row_selected){
 
 
 /* function armazenar os tempos das partidas e nome dos vencedores */
-
+// records array
+let records = []
+ function  getTime(){
+   let horizontal = checkHorizontal()
+   let vertical = checkVertical()
+   let diagonal = checkDiagonal()
+   let new_winner = new Object()
+   if(horizontal || vertical || diagonal){
+     clearInterval(cronometro)
+     if(!first_player_turn){
+       new_winner.name = namePlayerOne
+       console.log(timer)
+       new_winner.time = timer
+     }
+    }
+    console.log(new_winner)
+ }
+// set record funciton
+// get record funciton
+// is record function chama a set records
 /* function armazenar os tempos das partidas e nome dos vencedores */
 
 
@@ -170,13 +188,13 @@ function checkWin(){
     }
     containerGamePage.classList.add('hidden');
     containerGameWin.classList.remove('hidden')
-    storageTimes()
+    // storageTimes()
     resetaCronometro()
   }
   if(draw){
     containerGamePage.classList.add('hidden');
     containerGameDraw.classList.remove('hidden')
-    storageTimes()
+    // storageTimes()
     resetaCronometro()
   }
 }
@@ -237,7 +255,6 @@ function create_table(){
         element.addEventListener("click", e =>{
             let column_selected = element.dataset.column_value
             put_piece(column_selected)
-            iniciaCronometro()
         })
     });
     checkWin()
@@ -260,7 +277,9 @@ btnStartGame.addEventListener('click', (event) => {
     containerNamePlayerTwoInGame.innerHTML = `${namePlayerTwo}`;
   
     init_game()
-  
+    timer = 0
+    iniciaCronometro()
+
     containerHomePage.classList.add('hidden');
     containerGamePage.classList.remove('hidden');
 
