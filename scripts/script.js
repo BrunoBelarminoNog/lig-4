@@ -348,3 +348,5 @@ btnSoundOff.addEventListener('click', () => {
   btnSoundOff.classList.add('hidden')
   soundGame.play()
 })
+
+soundGame.volume = 0.2;
