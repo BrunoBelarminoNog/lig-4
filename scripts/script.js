@@ -196,6 +196,8 @@ function init_game(){
                   [0,0,0,0,0,0],
                   [0,0,0,0,0,0],
                   [0,0,0,0,0,0]]
+    first_player_turn = true
+    root.style.setProperty("--background_color_column_indicator", "blue");
     create_table()
 }
 /* function reinicar game */
