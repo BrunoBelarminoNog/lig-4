@@ -24,6 +24,8 @@ const soundGame = document.getElementById('audio_game');
 const soundDraw = new Audio("./assets/sounds/DRAW-player-losing-or-failing.wav");
 const soundWinner = new Audio("./assets/sounds/WINNER-completion-of-a-level.wav");
 const soundBall = new Audio("./assets/sounds/BALL--game-ball-tap.wav");
+const containerBio = document.getElementById('bio')
+const containerCredits = document.getElementById('credits')
 let root = document.querySelector(':root');
 
 let namePlayerOne
@@ -346,3 +348,13 @@ btnSoundOff.addEventListener('click', () => {
 });
 
 soundGame.volume = 0.2;
+
+containerBio.addEventListener('click', () => {
+  containerHomePage.classList.add('hidden')
+  containerCredits.classList.remove('hidden')
+})
+
+containerBio.addEventListener('mouseenter', () => {
+  containerHomePage.classList.remove('hidden')
+  containerCredits.classList.add('hidden')
+})
