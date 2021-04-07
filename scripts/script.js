@@ -70,6 +70,7 @@ function temp() {
 /* function revezamento de turno */
 function put_piece(row_selected){
   let arrow_div = document.getElementById("players")
+  let positionColumn
   for(let column = game_table.length -1; column >= 0; column--){
       if(game_table[row_selected][column] == 0){
           if(first_player_turn){
@@ -77,14 +78,16 @@ function put_piece(row_selected){
               first_player_turn = false
               arrow_div.classList.add("rotate")
               root.style.setProperty("--background_color_column_indicator", "#7fe9a8e8");
+              positionColumn = column
           }else{
               game_table[row_selected][column] = "blue"
               first_player_turn = true
               arrow_div.classList.remove("rotate")
               root.style.setProperty("--background_color_column_indicator", "#e79bfa");
+              positionColumn = column
           }
           console.log(game_table)
-          create_table();
+          create_table(row_selected, positionColumn);
           break;
       }
   }
@@ -208,7 +211,8 @@ function init_game(){
 
 
 /* function criar tabela */
-function create_table(){
+function create_table(col, indexCol){
+
     game_screen.innerHTML = ``
     for(let column in game_table){
         column_div = document.createElement("div")
@@ -221,10 +225,19 @@ function create_table(){
             }
             if(game_table[column][row] == "blue"){
                 div.classList.add("blue")
+                if(column == col && row == indexCol) {
+                  div.classList.add('current')
+                  column_div.classList.add('current')
+                }
             }
             if(game_table[column][row] == "red"){
                 div.classList.add("red")
+                if(column == col && row == indexCol) {
+                  div.classList.add('current')
+                  column_div.classList.add('current')
+                }
             }
+            
             column_div.appendChild(div)
         }
         game_screen.appendChild(column_div)
@@ -236,9 +249,14 @@ function create_table(){
             put_piece(column_selected)
             iniciaCronometro()
         })
+        element.addEventListener('mouseout', e => {
+            element.classList.remove('current')
+        })
     });
     checkWin()
 }
+
+
 /* function criar tabela */
 
 
