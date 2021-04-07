@@ -43,7 +43,7 @@ let namePlayerTwo
 let segundo = 0;
 let minuto = 0;
 let cronometro;
-
+let timer = 0
 function iniciaCronometro() {
     clearInterval(cronometro)
     cronometro = setInterval(() => { temp(); }, 1000);
@@ -53,13 +53,12 @@ function resetaCronometro() {
     clearInterval(cronometro);
     minuto = 0;
     segundo = 0;
-
     document.getElementById('cronometro').innerText = '00:00';
 }
 
 function temp() {
     segundo++
-
+    timer++
     if (segundo == 60) {
         segundo = 0
         minuto++
@@ -99,46 +98,26 @@ function put_piece(row_selected){
 
 
 /* function armazenar os tempos das partidas e nome dos vencedores */
-/* criando objeto que armazena os 3 melhores tempos */
-class ranking {
-  constructor(player){
-    this.name = player
-    this.bestTime = []
-  }
-}
-let playerOne = new ranking(namePlayerOne)
-let playerTwo = new ranking(namePlayerTwo)
-/* criando objeto que armazena os 3 melhores tempos */
-function storageTimes(){
-  let vertical = checkVertical()
-  let horizontal = checkHorizontal()
-  let diagonal = checkDiagonal()
-  if(vertical || horizontal || diagonal){
-    let time = temp()
-    console.log(time)
-    if(!first_player_turn){
-      playerOne['name'] = namePlayerOne
-      if(playerOne['bestTime'].length < 3){
-        playerOne['bestTime'].push(time)
-      }
-      else{
-        playerOne['bestTime'].pop()
-        playerOne['bestTime'].push(time)
-      }
+// records array
+let records = []
+ function  getTime(){
+   let horizontal = checkHorizontal()
+   let vertical = checkVertical()
+   let diagonal = checkDiagonal()
+   let new_winner = new Object()
+   if(horizontal || vertical || diagonal){
+     clearInterval(cronometro)
+     if(!first_player_turn){
+       new_winner.name = namePlayerOne
+       console.log(timer)
+       new_winner.time = timer
+     }
     }
-    else{
-      playerTwo['name'] = namePlayerTwo
-      if(playerTwo['bestTime'].length < 3){
-        playerTwo['bestTime'].push(time)
-      }
-      else{
-        playerTwo['bestTime'].pop()
-        playerTwo['bestTime'].push(time)
-      }
-    }
-  }
-  console.log(playerOne)
-};
+    console.log(new_winner)
+ }
+// set record funciton
+// get record funciton
+// is record function chama a set records
 /* function armazenar os tempos das partidas e nome dos vencedores */
 
 
@@ -219,15 +198,20 @@ function checkWin(){
     }
     containerGamePage.classList.add('hidden');
     containerGameWin.classList.remove('hidden')
+    // storageTimes()
+    resetaCronometro()
     soundWinner.play()
   }
   if(draw){
     containerGamePage.classList.add('hidden');
     containerGameDraw.classList.remove('hidden')
+    // storageTimes()
+    resetaCronometro()
     soundDraw.play()
   }
-  storageTimes()
-};
+}
+
+
 
 function checkDraw(){
   let control = [false, false, false, false, false, false, false]
@@ -287,7 +271,6 @@ function create_table(){
         element.addEventListener("click", e =>{
             let column_selected = element.dataset.column_value
             put_piece(column_selected)
-            iniciaCronometro()
         })
     });
     checkWin();
@@ -310,7 +293,9 @@ btnStartGame.addEventListener('click', (event) => {
     containerNamePlayerTwoInGame.innerHTML = `${namePlayerTwo}`;
   
     init_game()
-  
+    timer = 0
+    iniciaCronometro()
+
     containerHomePage.classList.add('hidden');
     containerGamePage.classList.remove('hidden');
 
