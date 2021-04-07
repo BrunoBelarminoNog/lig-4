@@ -1,11 +1,5 @@
 /* variaveis e constantes */
-let game_table = [[0,0,0,0,0,0],
-                  [0,0,0,0,0,0],
-                  [0,0,0,0,0,0],
-                  [0,0,0,0,0,0],
-                  [0,0,0,0,0,0],
-                  [0,0,0,0,0,0],
-                  [0,0,0,0,0,0]]
+let game_table = []
 const game_screen = document.getElementById("tabuleiro")
 let first_player_turn = true
 
@@ -245,21 +239,22 @@ btnStartGame.addEventListener('click', (event) => {
   if(inputPlayerOne.value === "" || inputPlayerTwo.value === "") {
     event.preventDefault()
     alert('Preencha o campo de nomes')
+  } else{
+    namePlayerOne = inputPlayerOne.value;
+    namePlayerTwo = inputPlayerTwo.value;
+  
+    inputPlayerOne.value = ""
+    inputPlayerTwo.value = ""
+  
+    containerNamePlayerOneInGame.innerHTML = `${namePlayerOne}`;
+    containerNamePlayerTwoInGame.innerHTML = `${namePlayerTwo}`;
+  
+    init_game()
+  
+    containerHomePage.classList.add('hidden');
+    containerGamePage.classList.remove('hidden');
+
   }
-
-  namePlayerOne = inputPlayerOne.value;
-  namePlayerTwo = inputPlayerTwo.value;
-
-  inputPlayerOne.value = ""
-  inputPlayerTwo.value = ""
-
-  containerNamePlayerOneInGame.innerHTML = `${namePlayerOne}`;
-  containerNamePlayerTwoInGame.innerHTML = `${namePlayerTwo}`;
-
-  init_game()
-
-  containerHomePage.classList.add('hidden');
-  containerGamePage.classList.remove('hidden');
 })
 
 btnRestartGame.addEventListener('click', ()=> {
