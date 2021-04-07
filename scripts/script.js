@@ -20,7 +20,7 @@ const containerInfo = document.getElementById('info_div')
 const containerRanking = document.getElementById('ranking_div')
 const btnSoundOn = document.getElementById('audio_on');
 const btnSoundOff = document.getElementById('audio_off');
-const soundGame = new Audio("./assets/sounds/GAME-game-level-music.wav");
+const soundGame = document.getElementById('audio_game');
 const soundDraw = new Audio("./assets/sounds/DRAW-player-losing-or-failing.wav");
 const soundWinner = new Audio("./assets/sounds/WINNER-completion-of-a-level.wav");
 const soundBall = new Audio("./assets/sounds/BALL--game-ball-tap.wav");
@@ -36,18 +36,16 @@ let namePlayerTwo
 /* eventos de click */
 
 // function effectsSounds(effect) {
-//   if () {
-//       return
+//   if (!btnSoundOn) {
+//     soundOn.play();
 //   }
 
-//   if (effect === "click") {
-//       soundOn.play();
+//   if (effect === "ball") {
+//     soundBall.play()
 //   } else if (effect === "draw") {
 //       soundDraw.play()
 //   } else if (effect === "win") {
 //       soundWinner.play()
-//   } else if (effect === "ball") {
-//       soundBall.play()
 //   }
 // }
 
@@ -342,9 +340,11 @@ btnClose.addEventListener('click', () => {
 btnSoundOn.addEventListener('click', () => {
   btnSoundOff.classList.remove('hidden')
   btnSoundOn.classList.add('hidden')
+  soundGame.pause()
 })
 
 btnSoundOff.addEventListener('click', () => {
   btnSoundOn.classList.remove('hidden')
   btnSoundOff.classList.add('hidden')
+  soundGame.play()
 })
