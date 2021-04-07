@@ -98,7 +98,7 @@ main #content_game {
     padding: 1rem;
 }
 
-main #content_game:before {
+main #content_game:before{
     content: '';
     position: absolute;
     top: 0;
@@ -204,7 +204,7 @@ main  #bio{
     position: absolute;
     border: 2px solid #f6f6f6;
     background-color: #f6f6f6;
-    padding: ;
+    /* padding: ; */
     border-radius: 40px 0 0 40px;
     width: 50px;
     height: 50px;
@@ -215,6 +215,48 @@ main  #bio{
     align-items: center;
     justify-content: center;
 }
+
+main #content_game #game_win {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 20% 60% 20%;
+    gap: 0px 0px;
+    grid-template-areas:
+        "player"
+        "img"
+        "btn";
+    align-items: center;
+    max-height: 100%;
+}
+
+main #content_game #game_win h1 {
+    font-size: 5rem;
+    text-align: center;
+    text-shadow:#000 4px -4px, #000 -4px 4px, #000 4px 4px, #000 -4px -4px;
+    color: rgb(169, 156, 248);
+    grid-area: player;
+}
+
+main #content_game #game_win img {
+    width: 300px;
+    grid-area: img;
+}
+
+main #content_game #game_win button {
+    width: 50%;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    padding: .4rem .5rem;
+    border-radius: 18px;
+    border: 2px solid transparent;
+    outline: none;
+    cursor: pointer;
+    transition: all 400ms;
+    background-color: #fff;
+    margin: 0 auto;
+    grid-area: btn;
+}
+
 
 
 main #bio svg {
@@ -356,6 +398,93 @@ main #content_game #game #players #player_two_name {
     color: red;
     text-transform: uppercase;
 }
+main #info_div::before{
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 70vh;
+    width: 90%;
+    max-width: 1020px;
+    background: rgba(250, 250, 250, 0.4);
+    backdrop-filter: blur(8px);
+    z-index: -1;
+    border-radius: 2rem;
+}
+main #info_div {
+    display: flex;
+    flex-flow: row-reverse wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: fixed;
+    z-index: 10;
+    max-height: 70vh;
+    width: 90%;
+    max-width: 1020px;
+    overflow: auto;
+    padding: 1rem;
+}
+main #info_div #close {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+main #info_div #close span svg {
+    width: 1.5rem;
+}
+main #info_div article {
+    width: 90%;
+    font-size: 0.8rem;
+    line-height: 1.2;
+    text-align: justify;
+    padding: 0 1rem 1rem;
+}
+main #info_div article h4 {
+    margin: 0.5rem 0;
+}
+main #content_game #game_draw {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main #content_game #game_draw h3 {
+    font-size: 3rem;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-10deg);
+    color: rgb(255, 104, 129);
+    text-shadow: #000 2px -2px, #000 -2px 2px, #000 2px 2px, #000 -2px -2px;
+    letter-spacing: .1rem;
+    z-index: 5;
+    animation: scaleTitle .7s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes scaleTitle {
+    from {
+        transform: translate(-50%, -50%) rotate(-10deg) scale(0);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(-10deg) scale(1);
+    }
+}
+
+main #content_game .reset_game {
+    width: 80%;
+    margin: 1rem auto 0 auto;
+    font-size: 1.2rem;
+    padding: .4rem .5rem;
+    border-radius: 18px;
+    border: 2px solid transparent;
+    outline: none;
+    cursor: pointer;
+    transition: all 400ms;
+    background-color: #fff;
+}
 /* INICIAL */
   
 /* FOOTER */
@@ -392,6 +521,10 @@ footer{}
 
     main #content_game #game #players svg {
         width: 2rem;
+    }
+    main #info_div article {
+        font-size: 1.2rem;
+        line-height: 1.5;
     }
 }
 
