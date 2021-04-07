@@ -295,18 +295,39 @@ main #content_game #game #timer svg{
 }
 
 
-
 main #content_game #game #tabuleiro  {
-    width: 100%;
-    min-width: 190px;
-    max-width: 600px;
+    width: 230px;
     display: flex;
-    border-radius: 12px;
+    border-radius: 12px 12px 0 0;
     background-color: rgba(0, 0, 255, 0.349);
-    padding: 0 1rem;
+    box-shadow: inset -15px -10px 20px rgba(0, 0, 0, 0.377);
+    padding: 0 1.1rem;
     position: relative;
-
 }
+
+main #content_game #game #tabuleiro::before {
+    content: "";
+    height: 110%;
+    width: .8rem;
+    position: absolute;
+    background-color: rgb(3, 1, 126);
+    box-shadow: inset 5px 4px 6px rgba(233, 233, 233, 0.61);
+
+    left: 0;
+    border-radius: 12px 0 0 0;
+}
+
+main #content_game #game #tabuleiro::after {
+    content: "";
+    height: 110%;
+    width: .8rem;
+    position: absolute;
+    background-color: rgb(3, 1, 126);
+    box-shadow: inset -5px 4px 6px rgba(233, 233, 233, 0.61);
+    right: 0;
+    border-radius: 0 12px 0 0;
+}
+
 
 main #content_game #game #tabuleiro .column{
     height: 100%;
@@ -507,10 +528,31 @@ footer{}
 
 /* MEDIA QUERIES */
 @media only screen and (min-width: 375px){
-
+    main #content_game #game #tabuleiro  {
+        width: 100%;
+        min-width: 190px;
+        max-width: 600px;
+        display: flex;
+        border-radius: 12px;
+        background-color: rgba(0, 0, 255, 0.349);
+        padding: 0 1rem;
+        position: relative;
+    
+    }
 }
 
 @media only screen and (min-width: 768px){
+    main #content_game #game #tabuleiro  {
+        width: 100%;
+        min-width: 190px;
+        max-width: 600px;
+        display: flex;
+        border-radius: 12px;
+        background-color: rgba(0, 0, 255, 0.349);
+        padding: 0 1rem;
+        position: relative;
+    
+    }
     main #content_game #game #tabuleiro .column:hover::before {
         top: -70px;
     }   
@@ -529,6 +571,16 @@ footer{}
 }
 
 @media only screen and (min-width: 1200px) {
-
+    main #content_game #game #tabuleiro  {
+        width: 100%;
+        min-width: 190px;
+        max-width: 600px;
+        display: flex;
+        border-radius: 12px;
+        background-color: rgba(0, 0, 255, 0.349);
+        padding: 0 1rem;
+        position: relative;
+    
+    }
 }
 /* MEDIA QUERIES */

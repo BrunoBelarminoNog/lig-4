@@ -275,3 +275,5 @@ btnAjuda.addEventListener('click', () => {
 btnClose.addEventListener('click', () => {
   containerInfo.classList.add('hidden')
 })
+
+init_game()
