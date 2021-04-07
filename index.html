@@ -23,7 +23,7 @@
         <div class="container">
 
             <div id="content_game">
-                <section id="initial" >
+                <section id="initial">
                     <h1>Lig<span>4</span></h1>
 
                     <div class="input_players">
@@ -34,7 +34,7 @@
 
                     <div class="settings_infos">
                         <div id="audio">
-                            <span id="audio_on">
+                            <span id="audio_on" class="hidden">
                                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="34" height="32"
                                     viewBox="0 0 34 32">
                                     <title>Audio ligado</title>
@@ -46,7 +46,7 @@
                                     </path>
                                 </svg>
                             </span>
-                            <span id="audio_off" class="hidden">
+                            <span id="audio_off" >
                                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
                                     viewBox="0 0 32 32">
                                     <title>Audio desligado</title>
@@ -118,7 +118,7 @@
                 <section id="game_win" class="hidden">
                     <h1 id="game_win_player"></h1>
                     <img src="./assets/images/winner.gif" alt="winner">
-                    <button type="button" class="reset_game">Novo Jogo</button>
+                    <button type="button" id="reset_game">Novo Jogo</button>
                 </section>
 
                 <section id="game_draw" class="hidden">
@@ -127,7 +127,7 @@
                     <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_SuFk0E.json"
                         background="transparent" speed="1" style="width: 300px; height: 300px;" loop  autoplay>
                     </lottie-player>
-                    <button type="button" class="reset_game">Novo Jogo</button>
+                    <button type="button" class="reset_game" id="reset_game">Novo Jogo</button>
 
                 </section>
 
@@ -240,7 +240,7 @@
     <footer>
 
     </footer>
-
+    <audio src="./assets/sounds/GAME-level-music.mp3" id="audio_game" preload="auto" autoplay></audio>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script src="./scripts/set_particle.js"></script>
