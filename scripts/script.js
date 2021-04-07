@@ -18,6 +18,8 @@ const containerGameWin = document.getElementById('game_win')
 const containerGameDraw = document.getElementById('game_draw')
 const containerInfo = document.getElementById('info_div')
 const containerRanking = document.getElementById('ranking_div')
+const containerBio = document.getElementById('bio')
+const containerCredits = document.getElementById('credits')
 let root = document.querySelector(':root');
 
 let namePlayerOne
@@ -314,4 +316,14 @@ btnAjuda.addEventListener('click', () => {
 })
 btnClose.addEventListener('click', () => {
   containerInfo.classList.add('hidden')
+})
+
+containerBio.addEventListener('click', () => {
+  containerHomePage.classList.add('hidden')
+  containerCredits.classList.remove('hidden')
+})
+
+containerBio.addEventListener('mouseenter', () => {
+  containerHomePage.classList.remove('hidden')
+  containerCredits.classList.add('hidden')
 })
