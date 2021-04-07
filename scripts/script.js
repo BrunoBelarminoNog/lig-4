@@ -14,8 +14,14 @@ const containerGamePage = document.getElementById('game');
 const inputPlayerOne = document.getElementById('player_one');
 const inputPlayerTwo = document.getElementById('player_two');
 const btnStartGame = document.getElementById('submit_game');
+const btnAjuda = document.getElementById('info');
+const btnClose = document.getElementById('close');
+const btnRestartGame = document.querySelector('.reset_game');
 const containerNamePlayerOneInGame = document.getElementById('player_one_name');
 const containerNamePlayerTwoInGame = document.getElementById('player_two_name');
+const containerGameWin = document.getElementById('game_win')
+const containerGameDraw = document.getElementById('game_draw')
+const containerInfo = document.getElementById('info_div')
 let root = document.querySelector(':root');
 
 let namePlayerOne
@@ -27,6 +33,39 @@ let namePlayerTwo
 
 /* eventos de click  */
 
+/* cronometro */
+let segundo = 0;
+let minuto = 0;
+let cronometro;
+
+function iniciaCronometro() {
+    clearInterval(cronometro)
+    cronometro = setInterval(() => { temp(); }, 1000);
+}
+
+function resetaCronometro() {
+    clearInterval(cronometro);
+    minuto = 0;
+    segundo = 0;
+
+    document.getElementById('cronometro').innerText = '00:00';
+}
+
+function temp() {
+    segundo++
+
+    if (segundo == 60) {
+        segundo = 0
+        minuto++
+    }
+
+    let saida = (minuto < 10 ? '0' + minuto : minuto) + ':' + (segundo < 10 ? '0' + segundo : segundo);
+   
+    document.getElementById("cronometro").innerText = saida;
+
+    return saida;
+}
+/* cronometro */
 
 /* function revezamento de turno */
 function put_piece(row_selected){
@@ -59,7 +98,7 @@ function put_piece(row_selected){
 
 
 /* function verificar resultado da partida */ 
-function checkHorizontal() {
+function checkVertical() {
   let output = false;
   for (let row = 0; row < game_table.length; row++) {
     for (let col = 3; col < game_table[row].length; col++) {
@@ -75,7 +114,7 @@ function checkHorizontal() {
   }
   return output;
 }
-function checkVertical() {
+function checkHorizontal() {
   let output = false;
   for (let row = 3; row < game_table.length; row++) {
     for (let col = 0; col < game_table[0].length; col++) {
@@ -123,19 +162,33 @@ function checkWin(){
   let vertical = checkVertical()
   let horizontal = checkHorizontal()
   let diagonal = checkDiagonal()
-  let result = document.createElement('span')
+  let draw = checkDraw()
+  let result = document.createElement('h1')
   if((vertical || horizontal || diagonal) === true){
-    document.getElementById('game_win').innerHTML = ''
     if(first_player_turn){
-      result.innerHTML = `${inputPlayerOne.value} ganhou!`
+      result.innerHTML = `${namePlayerOne}`
     }
     else{
-      result.innerHTML = `${inputPlayerTwo.value} ganhou!`
+      result.innerHTML = `${namePlayerTwo}`
     }
-    document.getElementById('game_win').appendChild(result)
+    containerGameWin.appendChild(result)
     containerGamePage.classList.add('hidden');
-    document.getElementById('game_win').remove('hidden')
+    containerGameWin.classList.remove('hidden')
   }
+  if(draw){
+    containerGamePage.classList.add('hidden');
+    containerGameDraw.classList.remove('hidden')
+  }
+}
+
+function checkDraw(){
+  let control = [false, false, false, false, false, false, false]
+  game_table.forEach((element, index) => {
+    if(!element.includes(0)){
+      control[index] = true
+    }
+  })
+  return control.includes(false) ? false : true
 }
 /* function verificar resultado da partida */ 
 
@@ -181,6 +234,7 @@ function create_table(){
         element.addEventListener("click", e =>{
             let column_selected = element.dataset.column_value
             put_piece(column_selected)
+            iniciaCronometro()
         })
     });
     checkWin()
@@ -207,4 +261,17 @@ btnStartGame.addEventListener('click', (event) => {
 
   containerHomePage.classList.add('hidden');
   containerGamePage.classList.remove('hidden');
+})
+
+btnRestartGame.addEventListener('click', ()=> {
+  containerGameWin.classList.add('hidden')
+  containerGameDraw.classList.add('hidden')
+  containerHomePage.classList.remove('hidden')
+})
+
+btnAjuda.addEventListener('click', () => {
+  containerInfo.classList.remove('hidden')
+})
+btnClose.addEventListener('click', () => {
+  containerInfo.classList.add('hidden')
 })
