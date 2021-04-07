@@ -10,7 +10,7 @@ const inputPlayerTwo = document.getElementById('player_two');
 const btnStartGame = document.getElementById('submit_game');
 const btnAjuda = document.getElementById('info');
 const btnClose = document.getElementById('close');
-const btnRestartGame = document.querySelector('.reset_game');
+const btnRestartGame = document.getElementById('reset_game');
 const btnRanking = document.getElementById('ranking');
 const containerNamePlayerOneInGame = document.getElementById('player_one_name');
 const containerNamePlayerTwoInGame = document.getElementById('player_two_name');
@@ -18,6 +18,12 @@ const containerGameWin = document.getElementById('game_win')
 const containerGameDraw = document.getElementById('game_draw')
 const containerInfo = document.getElementById('info_div')
 const containerRanking = document.getElementById('ranking_div')
+const btnSoundOn = document.getElementById('audio_on');
+const btnSoundOff = document.getElementById('audio_off');
+const soundGame = document.getElementById('audio_game');
+const soundDraw = new Audio("./assets/sounds/DRAW-player-losing-or-failing.wav");
+const soundWinner = new Audio("./assets/sounds/WINNER-completion-of-a-level.wav");
+const soundBall = new Audio("./assets/sounds/BALL--game-ball-tap.wav");
 const containerBio = document.getElementById('bio')
 const containerCredits = document.getElementById('credits')
 let root = document.querySelector(':root');
@@ -27,9 +33,11 @@ let namePlayerTwo
 /* variaveis e constantes */
 
 
-/* eventos de click  */
+/* eventos de click */
 
-/* eventos de click  */
+/* eventos de click */
+
+
 
 /* cronometro */
 let segundo = 0;
@@ -192,20 +200,24 @@ function checkWin(){
     containerGameWin.classList.remove('hidden')
     // storageTimes()
     resetaCronometro()
+    soundWinner.play()
   }
   if(draw){
     containerGamePage.classList.add('hidden');
     containerGameDraw.classList.remove('hidden')
     // storageTimes()
     resetaCronometro()
+    soundDraw.play()
   }
 }
+
+
 
 function checkDraw(){
   let control = [false, false, false, false, false, false, false]
   game_table.forEach((element, index) => {
     if(!element.includes(0)){
-      control[index] = true
+      control[index] = true;
     }
   })
   return control.includes(false) ? false : true
@@ -244,9 +256,11 @@ function create_table(){
             }
             if(game_table[column][row] == "blue"){
                 div.classList.add("blue")
+                soundBall.play()
             }
             if(game_table[column][row] == "red"){
                 div.classList.add("red")
+                soundBall.play()
             }
             column_div.appendChild(div)
         }
@@ -259,8 +273,8 @@ function create_table(){
             put_piece(column_selected)
         })
     });
-    checkWin()
-}
+    checkWin();
+};
 /* function criar tabela */
 
 
@@ -286,20 +300,39 @@ btnStartGame.addEventListener('click', (event) => {
     containerGamePage.classList.remove('hidden');
 
   }
-})
+});
+
+btnRestartGame.addEventListener('click', ()=> {
+  containerGameDraw.classList.add('hidden')
+  containerHomePage.classList.remove('hidden')
+});
 
 btnRestartGame.addEventListener('click', ()=> {
   containerGameWin.classList.add('hidden')
-  containerGameDraw.classList.add('hidden')
   containerHomePage.classList.remove('hidden')
-})
+});
 
 btnAjuda.addEventListener('click', () => {
   containerInfo.classList.remove('hidden')
-})
+});
+
 btnClose.addEventListener('click', () => {
   containerInfo.classList.add('hidden')
-})
+});
+
+btnSoundOn.addEventListener('click', () => {
+  btnSoundOff.classList.remove('hidden')
+  btnSoundOn.classList.add('hidden')
+  soundGame.pause()
+});
+
+btnSoundOff.addEventListener('click', () => {
+  btnSoundOn.classList.remove('hidden')
+  btnSoundOff.classList.add('hidden')
+  soundGame.play()
+});
+
+soundGame.volume = 0.2;
 
 containerBio.addEventListener('click', () => {
   containerHomePage.classList.add('hidden')
