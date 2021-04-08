@@ -13,6 +13,7 @@ const btnClose = document.getElementById('close');
 const btnRestartGame = document.querySelectorAll('.reset_game');
 const btnCloseGame = document.getElementById('btn_close_game')
 const btnRanking = document.getElementById('ranking');
+const btnCloseRanking = document.getElementById('closeRanking');
 const btnCloseCredits = document.getElementById('close_credits');
 const containerNamePlayerOneInGame = document.getElementById('player_one_name');
 const containerNamePlayerTwoInGame = document.getElementById('player_two_name');
@@ -20,6 +21,7 @@ const containerGameWin = document.getElementById('game_win')
 const containerGameDraw = document.getElementById('game_draw')
 const containerInfo = document.getElementById('info_div')
 const containerRanking = document.getElementById('ranking_div')
+const containerRankingTimes = document.getElementById('times')
 const btnAudio = document.getElementById('audio');
 const iconSoundOn = document.getElementById('audio_on');
 const iconSoundOff = document.getElementById('audio_off');
@@ -111,6 +113,9 @@ function put_piece(row_selected){
 /* function armazenar os tempos das partidas e nome dos vencedores */
 // records array
 let records = []
+// records array
+
+//funciton armazenar tempos das vitorias
  function  getTime(){
    let horizontal = checkHorizontal()
    let vertical = checkVertical()
@@ -123,12 +128,71 @@ let records = []
        console.log(timer)
        new_winner.time = timer
      }
+     else{
+       new_winner.name = namePlayerTwo
+       new_winner.time = timer
+     }
+     return new_winner
     }
-    console.log(new_winner)
  }
-// set record funciton
-// get record funciton
-// is record function chama a set records
+ // function armazenar tempos das vitorias
+
+ // function checar se é record
+ function isRecord(){
+   if(records.length < 3){
+      records.push(getTime())
+      records.sort((a,b) => a.time - b.time)
+   }
+   else{
+     records.pop()
+     records.push(getTime())
+     records.sort((a,b) => a.time - b.time) 
+   }
+   return records
+ }
+ // function checar se é record
+ // function mostrar records
+ function printRecords (){
+   containerRankingTimes.innerHTML = ''
+   let times = [0, 0, 0]
+   for(let i = 0; i < records.length; i++){
+      let span = document.createElement('span')
+      if(records[i].time < 60){
+        if(records[i].time < 10){
+          times[i] = `00:0${records[i].time}`
+        }
+        else{
+          times[i] = `00:${records[i].time}`
+        }
+      }
+      else{
+        let min = records[i]['time'] % 60
+        let seg = records[i]['time'] - min * 60
+        if(min < 10){
+          if(seg < 10){
+            times[i] = `0${min}:0${seg}` 
+          }
+          else{
+            times[i] = `0${min}:${seg}`
+          }
+        }
+        else{
+          if(seg < 10){
+            times[i] = `${min}:0${seg}`
+          }
+          else{
+            times[i] = `${min}:${seg}`
+          }
+        }
+      }
+      if(records[i] !== undefined){
+        span.innerHTML = '<span>' + `${records[i].name}` + '</span>' + ` - ${times[i]}` 
+        containerRankingTimes.appendChild(span)
+      }
+   }
+ }
+ // function mostrar records
+
 /* function armazenar os tempos das partidas e nome dos vencedores */
 
 
@@ -209,14 +273,18 @@ function checkWin(){
     }
     containerGamePage.classList.add('hidden');
     containerGameWin.classList.remove('hidden')
-    // storageTimes()
+    getTime()
     resetaCronometro()
+    isRecord()
+    printRecords()
     soundWinner.play()
   }else if(draw){
     containerGamePage.classList.add('hidden');
     containerGameDraw.classList.remove('hidden')
-    // storageTimes()
+    getTime()
     resetaCronometro()
+    isRecord()
+    printRecords()
     soundDraw.play()
   }
 }
@@ -354,8 +422,12 @@ btnAudio.addEventListener('click', () => {
     soundGame.play()
   }
 });
-
-
+btnRanking.addEventListener('click', () => {
+  containerRanking.classList.remove('hidden')
+})
+btnCloseRanking.addEventListener('click', () => {
+  containerRanking.classList.add('hidden')
+})
 
 soundGame.volume = 0.2;
 
