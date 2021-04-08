@@ -36,13 +36,6 @@ let audioTurned = false;
 
 let namePlayerOne
 let namePlayerTwo
-/* variaveis e constantes */
-
-
-/* eventos de click */
-
-/* eventos de click */
-
 
 
 /* cronometro */
