@@ -14,6 +14,7 @@ const btnRestartGame = document.querySelectorAll('.reset_game');
 const btnCloseGame = document.getElementById('btn_close_game')
 const btnRanking = document.getElementById('ranking');
 const btnCloseRanking = document.getElementById('closeRanking');
+const btnCloseCredits = document.getElementById('close_credits');
 const containerNamePlayerOneInGame = document.getElementById('player_one_name');
 const containerNamePlayerTwoInGame = document.getElementById('player_two_name');
 const containerGameWin = document.getElementById('game_win')
@@ -446,3 +447,13 @@ btnCloseGame.addEventListener('click', () => {
 
   resetaCronometro()
 })
+
+btnCloseCredits.addEventListener('click', ()=> {
+  containerCredits.classList.add('hidden');
+  containerHomePage.classList.remove('hidden');
+})
+
+window.addEventListener('resize', () => {
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+});
