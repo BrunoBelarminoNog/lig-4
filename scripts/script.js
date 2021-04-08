@@ -36,13 +36,6 @@ let audioTurned = false;
 
 let namePlayerOne
 let namePlayerTwo
-/* variaveis e constantes */
-
-
-/* eventos de click */
-
-/* eventos de click */
-
 
 
 /* cronometro */
@@ -314,6 +307,7 @@ function init_game(){
                   [0,0,0,0,0,0]]
     first_player_turn = true
     root.style.setProperty("--background_color_column_indicator", "#e79bfa");
+    containerBio.classList.add("hidden")
     resetaCronometro();
     create_table()
 }
@@ -399,6 +393,7 @@ btnRestartGame.forEach(e => {
   containerGameDraw.classList.add('hidden')
   containerGameWin.classList.add('hidden')
   containerHomePage.classList.remove('hidden')
+  containerBio.classList.remove("hidden")
 })});
 
 btnAjuda.addEventListener('click', () => {
@@ -444,6 +439,7 @@ containerBio.addEventListener('mouseenter', () => {
 btnCloseGame.addEventListener('click', () => {
   containerGamePage.classList.add('hidden');
   containerHomePage.classList.remove('hidden');
+  containerBio.classList.remove("hidden")
 
   resetaCronometro()
 })
