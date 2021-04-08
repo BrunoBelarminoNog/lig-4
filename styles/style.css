@@ -56,6 +56,7 @@ html{}
 /* BODY */
 body{
     min-height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
     background-color: #FA8BFF;
     background-image: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);
     background-attachment: fixed;
