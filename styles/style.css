@@ -787,6 +787,10 @@ footer{}
 }
 
 @media only screen and (min-width: 768px){
+    main #content_game  {
+        min-height: 574px;
+    }
+
     main #content_game #game #tabuleiro  {
         width: 400px;
         height: 295px;
