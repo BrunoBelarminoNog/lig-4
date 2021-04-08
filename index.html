@@ -46,7 +46,7 @@
                                     </path>
                                 </svg>
                             </span>
-                            <span id="audio_off" >
+                            <span id="audio_off">
                                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
                                     viewBox="0 0 32 32">
                                     <title>Audio desligado</title>
@@ -60,7 +60,7 @@
                             </span>
                         </div>
                         <button id="info">
-                                Ajuda
+                            Ajuda
                         </button>
                         <button id="ranking">
                             <div>
@@ -85,6 +85,33 @@
                 </section>
 
                 <section id="game" class="hidden">
+                    <span id="btn_close_game"><svg version="1.1" id="fi_561128" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
+                        style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                        <g>
+                            <g>
+                                <path d="M257,0C117.104,0,0,113.029,0,255c0,140.742,116.009,257,257,257c142.13,0,255-117.257,255-257
+                            C512,114.061,397.951,0,257,0z M257,482.2C131.832,482.2,29.8,380.168,29.8,255C29.8,130.935,131.832,29.8,257,29.8
+                            c124.065,0,225.2,101.135,225.2,225.2C482.2,380.168,381.065,482.2,257,482.2z"></path>
+                            </g>
+                        </g>
+                        <g>
+                            <g>
+                                <path d="M373.764,310.124l-53.286-54.961l53.195-53.196c17.546-17.546,17.546-46.094,0-63.639
+                            c-17.546-17.547-46.096-17.545-63.64,0l-53.196,53.196l-54.961-53.287c-17.553-17.456-46.033-17.425-63.549,0.091
+                            c-17.546,17.545-17.546,46.094,0,63.639l53.195,53.196l-53.286,54.961c-17.455,17.553-17.425,46.034,0.091,63.549
+                            c17.516,17.516,45.996,17.546,63.549,0.091l54.961-53.287l53.196,53.196c17.544,17.545,46.094,17.546,63.64,0
+                            C391.189,356.158,391.219,327.677,373.764,310.124z M352.46,352.46c-5.863,5.863-15.351,5.863-21.214,0l-63.64-63.64
+                            c-5.794-5.794-15.165-5.867-21.048-0.163l-65.64,63.64c-0.056,0.054-0.11,0.108-0.165,0.163c-5.863,5.863-15.351,5.863-21.214,0
+                            c-5.863-5.864-5.862-15.35,0-21.213c0.055-0.055,0.109-0.11,0.163-0.165l63.64-65.64c5.703-5.883,5.631-15.254-0.163-21.048
+                            l-63.64-63.64c-5.863-5.864-5.863-15.35,0-21.213c5.863-5.863,15.351-5.863,21.214,0c0.055,0.055,0.109,0.109,0.165,0.163
+                            l65.64,63.64c5.885,5.704,15.256,5.631,21.048-0.163l63.64-63.64c5.863-5.863,15.351-5.863,21.214,0
+                            c5.863,5.864,5.862,15.349,0,21.213l-63.64,63.64c-5.794,5.794-5.866,15.165-0.163,21.048l63.64,65.64
+                            c0.054,0.055,0.108,0.11,0.163,0.165C358.323,337.111,358.323,346.597,352.46,352.46z">
+                                </path>
+                            </g>
+                        </g>
+                    </svg></span>
                     <div id="timer">
                         <span class="timer_icon">
                             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -117,7 +144,10 @@
 
                 <section id="game_win" class="hidden">
                     <h1 id="game_win_player"></h1>
-                    <img src="./assets/images/winner.gif" alt="winner">
+                    <h3>Ganhou!</h3>
+                    <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_SuFk0E.json"
+                        background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay>
+                    </lottie-player>
                     <button type="button" id="reset_game">Novo Jogo</button>
                 </section>
 
@@ -125,7 +155,7 @@
 
                     <h3>Empatou!</h3>
                     <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_SuFk0E.json"
-                        background="transparent" speed="1" style="width: 300px; height: 300px;" loop  autoplay>
+                        background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay>
                     </lottie-player>
                     <button type="button" class="reset_game" id="reset_game">Novo Jogo</button>
 
@@ -134,11 +164,26 @@
                 <section id="credits" class="hidden">
                     <h2>Desenvolvimento</h2>
                     <ul>
-                        <li>André Flor<span><a href="https://gitlab.com/andreflor" target="_blank"><i class="fab fa-gitlab"></i></a><a href="https://www.linkedin.com/in/andrefelipeflor/" target="_blank"><i class="fab fa-linkedin"></i></a></span></li>
-                        <li>Bruno Belarmino<span><a href="https://gitlab.com/BrunoBelarminoNog" target="_blank"><i class="fab fa-gitlab"></i></a><a href="https://www.linkedin.com/in/bruno-belarmino-nog/" target="_blank"><i class="fab fa-linkedin"></i></a></span></li>
-                        <li>Carolina Oliveira<span><a href="https://gitlab.com/carololiveira6" target="_blank"><i class="fab fa-gitlab"></i></a><a href="https://www.linkedin.com/in/carololiveira6/" target="_blank"><i class="fab fa-linkedin"></i></a></span></li>
-                        <li>Daniel Oliveira<span><a href="https://gitlab.com/danielrcamboim" target="_blank"><i class="fab fa-gitlab"></i></a><a href="https://www.linkedin.com/in/danielrcamboim/" target="_blank"><i class="fab fa-linkedin"></i></a></span></li>
-                        <li>Guilherme Lemes<span><a href="https://gitlab.com/guilemes-freitas" target="_blank"><i class="fab fa-gitlab"></i></a><a href="https://www.linkedin.com/in/guilemes-freitas/" target="_blank"><i class="fab fa-linkedin"></i></a></span></li>
+                        <li>André Flor<span><a href="https://gitlab.com/andreflor" target="_blank"><i
+                                        class="fab fa-gitlab"></i></a><a
+                                    href="https://www.linkedin.com/in/andrefelipeflor/" target="_blank"><i
+                                        class="fab fa-linkedin"></i></a></span></li>
+                        <li>Bruno Belarmino<span><a href="https://gitlab.com/BrunoBelarminoNog" target="_blank"><i
+                                        class="fab fa-gitlab"></i></a><a
+                                    href="https://www.linkedin.com/in/bruno-belarmino-nog/" target="_blank"><i
+                                        class="fab fa-linkedin"></i></a></span></li>
+                        <li>Carolina Oliveira<span><a href="https://gitlab.com/carololiveira6" target="_blank"><i
+                                        class="fab fa-gitlab"></i></a><a
+                                    href="https://www.linkedin.com/in/carololiveira6/" target="_blank"><i
+                                        class="fab fa-linkedin"></i></a></span></li>
+                        <li>Daniel Oliveira<span><a href="https://gitlab.com/danielrcamboim" target="_blank"><i
+                                        class="fab fa-gitlab"></i></a><a
+                                    href="https://www.linkedin.com/in/danielrcamboim/" target="_blank"><i
+                                        class="fab fa-linkedin"></i></a></span></li>
+                        <li>Guilherme Lemes<span><a href="https://gitlab.com/guilemes-freitas" target="_blank"><i
+                                        class="fab fa-gitlab"></i></a><a
+                                    href="https://www.linkedin.com/in/guilemes-freitas/" target="_blank"><i
+                                        class="fab fa-linkedin"></i></a></span></li>
                     </ul>
                 </section>
 
@@ -166,17 +211,19 @@
                 </div>
             </div>
             <div id="info_div" class="hidden">
-                <button id="close"><span><svg version="1.1" id="fi_561128" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
-                    <g>
-                        <g>
-                            <path d="M257,0C117.104,0,0,113.029,0,255c0,140.742,116.009,257,257,257c142.13,0,255-117.257,255-257
+                <button id="close"><span><svg version="1.1" id="fi_561128" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
+                            style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                            <g>
+                                <g>
+                                    <path d="M257,0C117.104,0,0,113.029,0,255c0,140.742,116.009,257,257,257c142.13,0,255-117.257,255-257
                                 C512,114.061,397.951,0,257,0z M257,482.2C131.832,482.2,29.8,380.168,29.8,255C29.8,130.935,131.832,29.8,257,29.8
                                 c124.065,0,225.2,101.135,225.2,225.2C482.2,380.168,381.065,482.2,257,482.2z"></path>
-                        </g>
-                    </g>
-                    <g>
-                        <g>
-                            <path d="M373.764,310.124l-53.286-54.961l53.195-53.196c17.546-17.546,17.546-46.094,0-63.639
+                                </g>
+                            </g>
+                            <g>
+                                <g>
+                                    <path d="M373.764,310.124l-53.286-54.961l53.195-53.196c17.546-17.546,17.546-46.094,0-63.639
                                 c-17.546-17.547-46.096-17.545-63.64,0l-53.196,53.196l-54.961-53.287c-17.553-17.456-46.033-17.425-63.549,0.091
                                 c-17.546,17.545-17.546,46.094,0,63.639l53.195,53.196l-53.286,54.961c-17.455,17.553-17.425,46.034,0.091,63.549
                                 c17.516,17.516,45.996,17.546,63.549,0.091l54.961-53.287l53.196,53.196c17.544,17.545,46.094,17.546,63.64,0
@@ -186,50 +233,28 @@
                                 l-63.64-63.64c-5.863-5.864-5.863-15.35,0-21.213c5.863-5.863,15.351-5.863,21.214,0c0.055,0.055,0.109,0.109,0.165,0.163
                                 l65.64,63.64c5.885,5.704,15.256,5.631,21.048-0.163l63.64-63.64c5.863-5.863,15.351-5.863,21.214,0
                                 c5.863,5.864,5.862,15.349,0,21.213l-63.64,63.64c-5.794,5.794-5.866,15.165-0.163,21.048l63.64,65.64
-                                c0.054,0.055,0.108,0.11,0.163,0.165C358.323,337.111,358.323,346.597,352.46,352.46z"></path>
-                        </g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    <g>
-                    </g>
-                    </svg></span></button>
+                                c0.054,0.055,0.108,0.11,0.163,0.165C358.323,337.111,358.323,346.597,352.46,352.46z">
+                                    </path>
+                                </g>
+                            </g>
+                        </svg></span></button>
                 <article>
                     <h4>Posição inicial e objetivo do jogo</h4>
-                    <p>O lig-4 pertence a uma série de jogos populares pois facilmente se aprendem as suas regras simples e o jogo consegue entreter os jogadores durante bastante tempo. O objetivo deste jogo é colocar quatro peças numa linha contínua vertical, horizontal ou diagonalmente. O jogo desenrola-se num tabuleiro de 7x6 e começa com o tabuleiro em branco.</p>
+                    <p>O lig-4 pertence a uma série de jogos populares pois facilmente se aprendem as suas regras
+                        simples e o jogo consegue entreter os jogadores durante bastante tempo. O objetivo deste jogo é
+                        colocar quatro peças numa linha contínua vertical, horizontal ou diagonalmente. O jogo
+                        desenrola-se num tabuleiro de 7x6 e começa com o tabuleiro em branco.</p>
                     <h4>Como jogar as peças</h4>
-                    <p>Ambos os jogadores jogam as suas peças no tabuleiro, uma peça por jogada. A regra é que a peça "caia" sempre. Quer dizer que a peça deve sempre ser jogada ou na linha do fundo ou sobre uma peça já colocada.</p>
+                    <p>Ambos os jogadores jogam as suas peças no tabuleiro, uma peça por jogada. A regra é que a peça
+                        "caia" sempre. Quer dizer que a peça deve sempre ser jogada ou na linha do fundo ou sobre uma
+                        peça já colocada.</p>
                     <h4>Como terminar o jogo</h4>
                     <p>O jogo termina quando uma das condições seguintes se verificar:</p>
                     <ul>
-                        <li>Um dos jogadores coloca quatro peças numa linha contínua vertical, horizontal ou diagonalmente. Este jogador vence o jogo.</li>
-                        <li>Todas as casas do tabuleiro estão ocupadas e nenhum jogador satisfaz a condição anterior de vitória. Neste caso o jogo termina em empate.</li>
+                        <li>Um dos jogadores coloca quatro peças numa linha contínua vertical, horizontal ou
+                            diagonalmente. Este jogador vence o jogo.</li>
+                        <li>Todas as casas do tabuleiro estão ocupadas e nenhum jogador satisfaz a condição anterior de
+                            vitória. Neste caso o jogo termina em empate.</li>
                     </ul>
                 </article>
             </div>
@@ -248,6 +273,3 @@
 </body>
 
 </html>
-
-
-
