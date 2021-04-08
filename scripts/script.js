@@ -13,6 +13,7 @@ const btnClose = document.getElementById('close');
 const btnRestartGame = document.querySelectorAll('.reset_game');
 const btnCloseGame = document.getElementById('btn_close_game')
 const btnRanking = document.getElementById('ranking');
+const btnCloseCredits = document.getElementById('close_credits');
 const containerNamePlayerOneInGame = document.getElementById('player_one_name');
 const containerNamePlayerTwoInGame = document.getElementById('player_two_name');
 const containerGameWin = document.getElementById('game_win')
@@ -373,4 +374,9 @@ btnCloseGame.addEventListener('click', () => {
   containerHomePage.classList.remove('hidden');
 
   resetaCronometro()
+})
+
+btnCloseCredits.addEventListener('click', ()=> {
+  containerCredits.classList.add('hidden');
+  containerHomePage.classList.remove('hidden');
 })
