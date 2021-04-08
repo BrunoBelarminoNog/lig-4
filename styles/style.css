@@ -621,6 +621,65 @@ main #content_game .reset_game {
     transition: all 400ms;
     background-color: #fff;
 }
+main #ranking_div::before{
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 70vh;
+    width: 90%;
+    max-width: 1020px;
+    background: rgba(250, 250, 250, 0.4);
+    backdrop-filter: blur(8px);
+    z-index: -1;
+    border-radius: 2rem;
+}
+
+main #ranking_div {
+    display: flex;
+    flex-flow: row wrap;
+    position: fixed;
+    z-index: 10;
+    width: 90%;
+    max-height: 70vh;
+    max-width: 1020px;
+    padding: 1rem;
+    align-items: flex-start;
+    justify-content: space-between;
+    top: 15%;
+
+}
+main #ranking_div h1{
+    font-size: 2.5rem;
+    width: 90%;
+    text-align: center;
+    margin: 1rem 0;
+}
+main #ranking_div #closeRanking {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+main #ranking_div #closeRanking span svg {
+    width: 1.5rem;
+}
+main #ranking_div #times {
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+}
+main #ranking_div #times span {
+    align-self:  center;
+}
+main #ranking_div #times span span {
+    font-size: 2rem;
+}
 /* INICIAL */
   
 /* FOOTER */

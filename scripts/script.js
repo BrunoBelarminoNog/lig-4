@@ -13,12 +13,14 @@ const btnClose = document.getElementById('close');
 const btnRestartGame = document.querySelectorAll('.reset_game');
 const btnCloseGame = document.getElementById('btn_close_game')
 const btnRanking = document.getElementById('ranking');
+const btnCloseRanking = document.getElementById('closeRanking');
 const containerNamePlayerOneInGame = document.getElementById('player_one_name');
 const containerNamePlayerTwoInGame = document.getElementById('player_two_name');
 const containerGameWin = document.getElementById('game_win')
 const containerGameDraw = document.getElementById('game_draw')
 const containerInfo = document.getElementById('info_div')
 const containerRanking = document.getElementById('ranking_div')
+const containerRankingTimes = document.getElementById('times')
 const btnAudio = document.getElementById('audio');
 const iconSoundOn = document.getElementById('audio_on');
 const iconSoundOff = document.getElementById('audio_off');
@@ -150,10 +152,10 @@ let records = []
  // function checar se é record
  // function mostrar records
  function printRecords (){
-   containerRanking.innerText = ''
+   containerRankingTimes.innerHTML = ''
    let times = [0, 0, 0]
    for(let i = 0; i < records.length; i++){
-      let div = document.createElement('div')
+      let span = document.createElement('span')
       if(records[i].time < 60){
         if(records[i].time < 10){
           times[i] = `00:0${records[i].time}`
@@ -183,8 +185,8 @@ let records = []
         }
       }
       if(records[i] !== undefined){
-        div.innerText = `${records[i].name} - ${times[i]}`
-        containerRanking.appendChild(div)
+        span.innerHTML = '<span>' + `${records[i].name}` + '</span>' + ` - ${times[i]}` 
+        containerRankingTimes.appendChild(span)
       }
    }
  }
@@ -419,8 +421,12 @@ btnAudio.addEventListener('click', () => {
     soundGame.play()
   }
 });
-
-
+btnRanking.addEventListener('click', () => {
+  containerRanking.classList.remove('hidden')
+})
+btnCloseRanking.addEventListener('click', () => {
+  containerRanking.classList.add('hidden')
+})
 
 soundGame.volume = 0.2;
 
