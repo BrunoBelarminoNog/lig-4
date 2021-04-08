@@ -429,7 +429,7 @@ btnCloseRanking.addEventListener('click', () => {
   containerRanking.classList.add('hidden')
 })
 
-soundGame.volume = 0.2;
+soundGame.volume = 0.5;
 
 containerBio.addEventListener('click', () => {
   containerHomePage.classList.add('hidden')
