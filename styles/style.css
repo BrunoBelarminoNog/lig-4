@@ -31,7 +31,7 @@ html, body, figure, div, input, textarea, p, h1, h2, h3, h4, h5, h6, ul, ol, li,
 
 .container {
     width: 90vw;
-    max-width: 1020px;
+    max-width: 800px;
     height: 100%;
     margin: 0 auto;
 }
@@ -111,12 +111,16 @@ main #content_game:before{
 }
 
 main #content_game #initial h1{
+    width: fit-content;
     font-size: 4rem;
     text-align: center;
     margin-bottom: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
     text-shadow:#000 4px -4px, #000 -4px 4px, #000 4px 4px, #000 -4px -4px;
     transform: rotate(-20deg);
     color: rgb(169, 156, 248);
+    z-index: 2;
 }
 
 main #content_game #initial h1 span {
@@ -129,11 +133,12 @@ main #content_game #initial h1 span {
 main #content_game #initial .input_players input{
     padding: .3rem .5rem;
     font-size: 1rem;
-    border-radius: 6px;
+    border-radius: 12px;
     outline: none;
     border: none;
     width: 100%;
     margin-bottom: 8px;
+    z-index: 4;
 }
 
 main #content_game #initial button {
@@ -141,7 +146,7 @@ main #content_game #initial button {
     margin-top: 1rem;
     font-size: 1.2rem;
     padding: .4rem .5rem;
-    border-radius: 18px;
+    border-radius: 12px;
     border: 2px solid transparent;
     outline: none;
     cursor: pointer;
@@ -167,10 +172,11 @@ main #content_game #initial #ranking,
 main #content_game #initial #info,
 main #content_game #initial #audio {
     width: fit-content;
+    width: -moz-max-content;
     margin-top: 1rem;
     font-size: 1.2rem;
     padding: .4rem 1rem;
-    border-radius: 18px;
+    border-radius: 12px;
     border: 2px solid transparent;
     outline: none;
     cursor: pointer;
@@ -178,6 +184,9 @@ main #content_game #initial #audio {
     background-color: #fff;
     color: #000;
     margin-right: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 main #content_game #initial #info {
@@ -185,8 +194,14 @@ main #content_game #initial #info {
     text-align: center;
 }
 
+main #content_game #initial #audio span {
+    display: flex;
+    align-items: center;
+}
+
 main #content_game #initial #audio svg{
     width: 30px;
+    transform: translateY(-3px);
 }
 
 main #content_game #initial #ranking {
@@ -226,20 +241,30 @@ main #content_game #game_win {
         "img"
         "btn";
     align-items: center;
-    max-height: 100%;
+    height: 100%;
+    position: relative;
 }
 
 main #content_game #game_win h1 {
-    font-size: 5rem;
+    font-size: 2.5rem;
     text-align: center;
+    text-transform: uppercase;
     text-shadow:#000 4px -4px, #000 -4px 4px, #000 4px 4px, #000 -4px -4px;
     color: rgb(169, 156, 248);
     grid-area: player;
 }
 
-main #content_game #game_win img {
-    width: 300px;
-    grid-area: img;
+main #content_game #game_win h3 {
+    font-size: 3rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-10deg);
+    color: rgb(155, 242, 144);
+    text-shadow: #000 2px -2px, #000 -2px 2px, #000 2px 2px, #000 -2px -2px;
+    letter-spacing: .1rem;
+    z-index: 5;
+    animation: scaleTitle 2s infinite;
 }
 
 main #content_game #game_win button {
@@ -257,7 +282,42 @@ main #content_game #game_win button {
     grid-area: btn;
 }
 
+main #content_game #game_win button:hover {
+    background: none;
+    border: 2px solid #fff;
+    color: #000;
+}
 
+main #content_game #credits {
+    width: 40%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    color: black;
+    font-size: 1.3rem;
+}
+
+main #content_game #credits h2 {
+    margin: 2px 0 15px 0;
+    text-align: center;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 5px;
+}
+
+span {
+    align-self: flex-end;
+}
+
+main #content_game #credits a {
+    text-decoration: none;
+    color: black;
+    margin: 0 5px 0 5px;
+}
 
 main #bio svg {
     width: 18px;
@@ -277,21 +337,48 @@ main #content_game #game {
     justify-content: center;
 }
 
+main #content_game #game #btn_close_game {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    transition: transform 400ms;
+    cursor: pointer;
+}
+
+main #content_game #game #btn_close_game:hover {
+    transform: scale(1.2) rotate(180deg);
+}
+
+main #content_game #game #btn_close_game svg{
+    fill: rgba(102, 102, 102, 0.856);
+}
+
 main #content_game #game #timer {
     display: flex;
     align-items: center;
     font-size: 1.5rem;
-    color: #444;
-    align-self: flex-end;
-    transform: translateY(-65px);
+    color: rgb(255, 255, 255);
+    text-shadow: rgba(0, 0, 0, 0.5) 1px -1px, rgba(0, 0, 0, 0.5) -1px 1px, rgba(0, 0, 0, 0.5) 2px 2px, rgba(0, 0, 0, 0.5) -2px -2px;
+    align-self: center;
+    transform: translateY(-6.5vh);
+    opacity: .8;
+}
 
+main #content_game #game #timer span {
+    display: flex;
+    align-items: center;
 }
 
 main #content_game #game #timer svg{
     width: 2rem;
     height: 2rem;
-    fill: rgb(7, 7, 85);
+    fill: rgb(255, 255, 255);
+    stroke: #000;
+    stroke-width: .7px;
     margin-right: 8px;
+    opacity: .8;
 }
 
 
@@ -356,7 +443,7 @@ main #content_game #game #tabuleiro .column div{
 }
 
 main #content_game #game #tabuleiro .column div.red::before{
-    background-color: #e79bfa;
+    background-color: #e79bfa ;
 }
 
 main #content_game #game #tabuleiro .column div.blue::before{
@@ -364,7 +451,7 @@ main #content_game #game #tabuleiro .column div.blue::before{
 }
 
 main #content_game #game #tabuleiro .column div.current::before{
-    animation: apperDisk .4s linear;
+    animation: apperDisk .5s linear;
 }
 
 @keyframes apperDisk {
@@ -401,7 +488,7 @@ main #content_game #game #tabuleiro .column div::before {
 main #content_game #game #players{
     margin-top: 1rem;
     width: 100%;
-    width: 230px;
+    max-width: 210px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -420,15 +507,20 @@ main #content_game #game #players.rotate svg {
 }
 
 main #content_game #game #players #player_one_name {
-    color: rgb(141, 230, 175);
+    color: rgb(231, 155, 250);
     text-shadow: rgba(0, 0, 0, 0.5) 1px -1px, rgba(0, 0, 0, 0.5) -1px 1px, rgba(0, 0, 0, 0.5) 2px 2px, rgba(0, 0, 0, 0.5) -2px -2px;
     text-transform: uppercase;
 }
 
 main #content_game #game #players #player_two_name {
-    color: rgb(231, 155, 250);
+    color:  rgb(141, 230, 175);
     text-shadow: rgba(0, 0, 0, 0.5) 1px -1px, rgba(0, 0, 0, 0.5) -1px 1px, rgba(0, 0, 0, 0.5) 2px 2px, rgba(0, 0, 0, 0.5) -2px -2px;
     text-transform: uppercase;
+}
+
+main #content_game #game #players .current_player {
+    transform: scale(1.4);
+    transition: transform 400ms;
 }
 
 main #info_div::before{
@@ -502,10 +594,17 @@ main #content_game #game_draw h3 {
 }
 
 @keyframes scaleTitle {
-    from {
+
+    0% {
         transform: translate(-50%, -50%) rotate(-10deg) scale(0);
     }
-    to {
+    50% {
+        transform: translate(-50%, -50%) rotate(-10deg) scale(1.2);
+    }
+    75% {
+        transform: translate(-50%, -50%) rotate(-10deg) scale(.8);
+    }
+    100% {
         transform: translate(-50%, -50%) rotate(-10deg) scale(1);
     }
 }
@@ -564,9 +663,15 @@ footer{}
     }   
 
     main #content_game #game #players{
-        width: 300px;
+        max-width: 280px;
         font-size: 1.5rem;
     }
+    
+    main #content_game #game_win h1 {
+        font-size: 3rem;
+    }
+
+    
 }
 
 @media only screen and (min-width: 768px){
@@ -582,11 +687,14 @@ footer{}
     }
 
     main #content_game #game #tabuleiro .column:hover::before {
-        top: -70px;
+        width: 34px;
+        height: 34px;
+        top: -40px;
     }   
 
     main #content_game #game #players{
         font-size: 1.5rem;
+        max-width: 380px;
     }
 
     main #content_game #game #players svg {
@@ -596,6 +704,22 @@ footer{}
         font-size: 1.2rem;
         line-height: 1.5;
     }
+
+    main #content_game #game_win h1 {
+        font-size: 4rem;
+    }
+
+    main #content_game #game_win h3 {
+        font-size: 4rem;  
+    }
+
+    main #content_game #game #btn_close_game {
+        width: 28px;
+        height: 28px;
+        top: 20px;
+        right: 20px;
+    }
+
 }
 
 @media only screen and (min-width: 1200px) {
@@ -609,5 +733,16 @@ footer{}
         width: 50px;
         height: 50px;
     }
+
+    main #content_game #game #tabuleiro .column:hover::before {
+        width: 40px;
+        height: 40px;
+        top: -44px;
+    }   
+
+    main #content_game #game #players{
+        max-width: 460px;
+    }
+
 }
 /* MEDIA QUERIES */
