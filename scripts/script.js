@@ -10,7 +10,7 @@ const inputPlayerTwo = document.getElementById('player_two');
 const btnStartGame = document.getElementById('submit_game');
 const btnAjuda = document.getElementById('info');
 const btnClose = document.getElementById('close');
-const btnRestartGame = document.getElementById('reset_game');
+const btnRestartGame = document.querySelectorAll('.reset_game');
 const btnCloseGame = document.getElementById('btn_close_game')
 const btnRanking = document.getElementById('ranking');
 const containerNamePlayerOneInGame = document.getElementById('player_one_name');
@@ -211,8 +211,7 @@ function checkWin(){
     // storageTimes()
     resetaCronometro()
     soundWinner.play()
-  }
-  if(draw){
+  }else if(draw){
     containerGamePage.classList.add('hidden');
     containerGameDraw.classList.remove('hidden')
     // storageTimes()
@@ -326,15 +325,12 @@ btnStartGame.addEventListener('click', (event) => {
   }
 });
 
-btnRestartGame.addEventListener('click', ()=> {
+btnRestartGame.forEach(e => {
+  e.addEventListener('click', e => {
   containerGameDraw.classList.add('hidden')
-  containerHomePage.classList.remove('hidden')
-});
-
-btnRestartGame.addEventListener('click', ()=> {
   containerGameWin.classList.add('hidden')
   containerHomePage.classList.remove('hidden')
-});
+})});
 
 btnAjuda.addEventListener('click', () => {
   containerInfo.classList.remove('hidden')
