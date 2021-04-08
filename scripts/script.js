@@ -10,7 +10,8 @@ const inputPlayerTwo = document.getElementById('player_two');
 const btnStartGame = document.getElementById('submit_game');
 const btnAjuda = document.getElementById('info');
 const btnClose = document.getElementById('close');
-const btnRestartGame = document.getElementById('reset_game');
+const btnRestartGame = document.querySelectorAll('.reset_game');
+const btnCloseGame = document.getElementById('btn_close_game')
 const btnRanking = document.getElementById('ranking');
 const containerNamePlayerOneInGame = document.getElementById('player_one_name');
 const containerNamePlayerTwoInGame = document.getElementById('player_two_name');
@@ -18,8 +19,9 @@ const containerGameWin = document.getElementById('game_win')
 const containerGameDraw = document.getElementById('game_draw')
 const containerInfo = document.getElementById('info_div')
 const containerRanking = document.getElementById('ranking_div')
-const btnSoundOn = document.getElementById('audio_on');
-const btnSoundOff = document.getElementById('audio_off');
+const btnAudio = document.getElementById('audio');
+const iconSoundOn = document.getElementById('audio_on');
+const iconSoundOff = document.getElementById('audio_off');
 const soundGame = document.getElementById('audio_game');
 const soundDraw = new Audio("./assets/sounds/DRAW-player-losing-or-failing.wav");
 const soundWinner = new Audio("./assets/sounds/WINNER-completion-of-a-level.wav");
@@ -27,6 +29,7 @@ const soundBall = new Audio("./assets/sounds/BALL--game-ball-tap.wav");
 const containerBio = document.getElementById('bio')
 const containerCredits = document.getElementById('credits')
 let root = document.querySelector(':root');
+let audioTurned = false;
 
 let namePlayerOne
 let namePlayerTwo
@@ -43,7 +46,7 @@ let namePlayerTwo
 let segundo = 0;
 let minuto = 0;
 let cronometro;
-
+let timer = 0
 function iniciaCronometro() {
     clearInterval(cronometro)
     cronometro = setInterval(() => { temp(); }, 1000);
@@ -53,13 +56,12 @@ function resetaCronometro() {
     clearInterval(cronometro);
     minuto = 0;
     segundo = 0;
-
     document.getElementById('cronometro').innerText = '00:00';
 }
 
 function temp() {
     segundo++
-
+    timer++
     if (segundo == 60) {
         segundo = 0
         minuto++
@@ -76,21 +78,28 @@ function temp() {
 /* function revezamento de turno */
 function put_piece(row_selected){
   let arrow_div = document.getElementById("players")
+  let positionColumn
   for(let column = game_table.length -1; column >= 0; column--){
       if(game_table[row_selected][column] == 0){
           if(first_player_turn){
-              game_table[row_selected][column] = "blue"
+              game_table[row_selected][column] = "red"
               first_player_turn = false
               arrow_div.classList.add("rotate")
-              root.style.setProperty("--background_color_column_indicator", "red");
+              containerNamePlayerTwoInGame.classList.add('current_player');
+              containerNamePlayerOneInGame.classList.remove('current_player');
+              root.style.setProperty("--background_color_column_indicator", "#7fe9a8e8");
+              positionColumn = column
           }else{
-              game_table[row_selected][column] = "red"
+              game_table[row_selected][column] = "blue"
               first_player_turn = true
               arrow_div.classList.remove("rotate")
-              root.style.setProperty("--background_color_column_indicator", "blue");
+              containerNamePlayerTwoInGame.classList.remove('current_player');
+              containerNamePlayerOneInGame.classList.add('current_player');
+              root.style.setProperty("--background_color_column_indicator", "#e79bfa");
+              positionColumn = column
           }
           console.log(game_table)
-          create_table();
+          create_table(row_selected, positionColumn);
           break;
       }
   }
@@ -99,46 +108,26 @@ function put_piece(row_selected){
 
 
 /* function armazenar os tempos das partidas e nome dos vencedores */
-/* criando objeto que armazena os 3 melhores tempos */
-class ranking {
-  constructor(player){
-    this.name = player
-    this.bestTime = []
-  }
-}
-let playerOne = new ranking(namePlayerOne)
-let playerTwo = new ranking(namePlayerTwo)
-/* criando objeto que armazena os 3 melhores tempos */
-function storageTimes(){
-  let vertical = checkVertical()
-  let horizontal = checkHorizontal()
-  let diagonal = checkDiagonal()
-  if(vertical || horizontal || diagonal){
-    let time = temp()
-    console.log(time)
-    if(!first_player_turn){
-      playerOne['name'] = namePlayerOne
-      if(playerOne['bestTime'].length < 3){
-        playerOne['bestTime'].push(time)
-      }
-      else{
-        playerOne['bestTime'].pop()
-        playerOne['bestTime'].push(time)
-      }
+// records array
+let records = []
+ function  getTime(){
+   let horizontal = checkHorizontal()
+   let vertical = checkVertical()
+   let diagonal = checkDiagonal()
+   let new_winner = new Object()
+   if(horizontal || vertical || diagonal){
+     clearInterval(cronometro)
+     if(!first_player_turn){
+       new_winner.name = namePlayerOne
+       console.log(timer)
+       new_winner.time = timer
+     }
     }
-    else{
-      playerTwo['name'] = namePlayerTwo
-      if(playerTwo['bestTime'].length < 3){
-        playerTwo['bestTime'].push(time)
-      }
-      else{
-        playerTwo['bestTime'].pop()
-        playerTwo['bestTime'].push(time)
-      }
-    }
-  }
-  console.log(playerOne)
-};
+    console.log(new_winner)
+ }
+// set record funciton
+// get record funciton
+// is record function chama a set records
 /* function armazenar os tempos das partidas e nome dos vencedores */
 
 
@@ -219,15 +208,19 @@ function checkWin(){
     }
     containerGamePage.classList.add('hidden');
     containerGameWin.classList.remove('hidden')
+    // storageTimes()
+    resetaCronometro()
     soundWinner.play()
-  }
-  if(draw){
+  }else if(draw){
     containerGamePage.classList.add('hidden');
     containerGameDraw.classList.remove('hidden')
+    // storageTimes()
+    resetaCronometro()
     soundDraw.play()
   }
-  storageTimes()
-};
+}
+
+
 
 function checkDraw(){
   let control = [false, false, false, false, false, false, false]
@@ -251,7 +244,7 @@ function init_game(){
                   [0,0,0,0,0,0],
                   [0,0,0,0,0,0]]
     first_player_turn = true
-    root.style.setProperty("--background_color_column_indicator", "blue");
+    root.style.setProperty("--background_color_column_indicator", "#e79bfa");
     resetaCronometro();
     create_table()
 }
@@ -259,7 +252,8 @@ function init_game(){
 
 
 /* function criar tabela */
-function create_table(){
+function create_table(col, indexCol){
+
     game_screen.innerHTML = ``
     for(let column in game_table){
         column_div = document.createElement("div")
@@ -273,10 +267,18 @@ function create_table(){
             if(game_table[column][row] == "blue"){
                 div.classList.add("blue")
                 soundBall.play()
+                if(column == col && row == indexCol) {
+                  div.classList.add('current')
+                  column_div.classList.add('current')
+                }
             }
             if(game_table[column][row] == "red"){
                 div.classList.add("red")
                 soundBall.play()
+                if(column == col && row == indexCol) {
+                  div.classList.add('current')
+                  column_div.classList.add('current')
+                }
             }
             column_div.appendChild(div)
         }
@@ -287,7 +289,9 @@ function create_table(){
         element.addEventListener("click", e =>{
             let column_selected = element.dataset.column_value
             put_piece(column_selected)
-            iniciaCronometro()
+        })
+        element.addEventListener('mouseout', e => {
+            element.classList.remove('current')
         })
     });
     checkWin();
@@ -308,24 +312,25 @@ btnStartGame.addEventListener('click', (event) => {
   
     containerNamePlayerOneInGame.innerHTML = `${namePlayerOne}`;
     containerNamePlayerTwoInGame.innerHTML = `${namePlayerTwo}`;
-  
+    containerNamePlayerOneInGame.classList.add('current_player')
+    containerNamePlayerTwoInGame.classList.remove('current_player')
+
     init_game()
-  
+    timer = 0
+    iniciaCronometro()
+
     containerHomePage.classList.add('hidden');
     containerGamePage.classList.remove('hidden');
 
   }
 });
 
-btnRestartGame.addEventListener('click', ()=> {
+btnRestartGame.forEach(e => {
+  e.addEventListener('click', e => {
   containerGameDraw.classList.add('hidden')
-  containerHomePage.classList.remove('hidden')
-});
-
-btnRestartGame.addEventListener('click', ()=> {
   containerGameWin.classList.add('hidden')
   containerHomePage.classList.remove('hidden')
-});
+})});
 
 btnAjuda.addEventListener('click', () => {
   containerInfo.classList.remove('hidden')
@@ -335,17 +340,21 @@ btnClose.addEventListener('click', () => {
   containerInfo.classList.add('hidden')
 });
 
-btnSoundOn.addEventListener('click', () => {
-  btnSoundOff.classList.remove('hidden')
-  btnSoundOn.classList.add('hidden')
-  soundGame.pause()
+btnAudio.addEventListener('click', () => {
+  if(audioTurned) {
+    iconSoundOff.classList.remove('hidden')
+    iconSoundOn.classList.add('hidden')
+    audioTurned = false
+    soundGame.pause()
+  } else {
+    iconSoundOff.classList.add('hidden')
+    iconSoundOn.classList.remove('hidden')
+    audioTurned = true
+    soundGame.play()
+  }
 });
 
-btnSoundOff.addEventListener('click', () => {
-  btnSoundOn.classList.remove('hidden')
-  btnSoundOff.classList.add('hidden')
-  soundGame.play()
-});
+
 
 soundGame.volume = 0.2;
 
@@ -357,4 +366,11 @@ containerBio.addEventListener('click', () => {
 containerBio.addEventListener('mouseenter', () => {
   containerHomePage.classList.remove('hidden')
   containerCredits.classList.add('hidden')
+})
+
+btnCloseGame.addEventListener('click', () => {
+  containerGamePage.classList.add('hidden');
+  containerHomePage.classList.remove('hidden');
+
+  resetaCronometro()
 })
