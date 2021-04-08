@@ -10,7 +10,8 @@ const inputPlayerTwo = document.getElementById('player_two');
 const btnStartGame = document.getElementById('submit_game');
 const btnAjuda = document.getElementById('info');
 const btnClose = document.getElementById('close');
-const btnRestartGame = document.getElementById('reset_game');
+const btnRestartWin = document.getElementById('reset_game');
+const btnRestartDraw = document.getElementById('reset_draw');
 const btnCloseGame = document.getElementById('btn_close_game')
 const btnRanking = document.getElementById('ranking');
 const containerNamePlayerOneInGame = document.getElementById('player_one_name');
@@ -326,12 +327,12 @@ btnStartGame.addEventListener('click', (event) => {
   }
 });
 
-btnRestartGame.addEventListener('click', ()=> {
+btnRestartDraw.addEventListener('click', ()=> {
   containerGameDraw.classList.add('hidden')
   containerHomePage.classList.remove('hidden')
 });
 
-btnRestartGame.addEventListener('click', ()=> {
+btnRestartWin.addEventListener('click', ()=> {
   containerGameWin.classList.add('hidden')
   containerHomePage.classList.remove('hidden')
 });
