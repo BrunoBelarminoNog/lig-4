@@ -110,6 +110,9 @@ function put_piece(row_selected){
 /* function armazenar os tempos das partidas e nome dos vencedores */
 // records array
 let records = []
+// records array
+
+//funciton armazenar tempos das vitorias
  function  getTime(){
    let horizontal = checkHorizontal()
    let vertical = checkVertical()
@@ -122,12 +125,71 @@ let records = []
        console.log(timer)
        new_winner.time = timer
      }
+     else{
+       new_winner.name = namePlayerTwo
+       new_winner.time = timer
+     }
+     return new_winner
     }
-    console.log(new_winner)
  }
-// set record funciton
-// get record funciton
-// is record function chama a set records
+ // function armazenar tempos das vitorias
+
+ // function checar se é record
+ function isRecord(){
+   if(records.length < 3){
+      records.push(getTime())
+      records.sort((a,b) => a.time - b.time)
+   }
+   else{
+     records.pop()
+     records.push(getTime())
+     records.sort((a,b) => a.time - b.time) 
+   }
+   return records
+ }
+ // function checar se é record
+ // function mostrar records
+ function printRecords (){
+   containerRanking.innerText = ''
+   let times = [0, 0, 0]
+   for(let i = 0; i < records.length; i++){
+      let div = document.createElement('div')
+      if(records[i].time < 60){
+        if(records[i].time < 10){
+          times[i] = `00:0${records[i].time}`
+        }
+        else{
+          times[i] = `00:${records[i].time}`
+        }
+      }
+      else{
+        let min = records[i]['time'] % 60
+        let seg = records[i]['time'] - min * 60
+        if(min < 10){
+          if(seg < 10){
+            times[i] = `0${min}:0${seg}` 
+          }
+          else{
+            times[i] = `0${min}:${seg}`
+          }
+        }
+        else{
+          if(seg < 10){
+            times[i] = `${min}:0${seg}`
+          }
+          else{
+            times[i] = `${min}:${seg}`
+          }
+        }
+      }
+      if(records[i] !== undefined){
+        div.innerText = `${records[i].name} - ${times[i]}`
+        containerRanking.appendChild(div)
+      }
+   }
+ }
+ // function mostrar records
+
 /* function armazenar os tempos das partidas e nome dos vencedores */
 
 
@@ -208,15 +270,19 @@ function checkWin(){
     }
     containerGamePage.classList.add('hidden');
     containerGameWin.classList.remove('hidden')
-    // storageTimes()
+    getTime()
     resetaCronometro()
+    isRecord()
+    printRecords()
     soundWinner.play()
   }
   if(draw){
     containerGamePage.classList.add('hidden');
     containerGameDraw.classList.remove('hidden')
-    // storageTimes()
+    getTime()
     resetaCronometro()
+    isRecord()
+    printRecords()
     soundDraw.play()
   }
 }
