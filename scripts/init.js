@@ -46,6 +46,9 @@ document.addEventListener('DOMContentLoaded', ()=> {
     .to('#particles-js', 2, {
         opacity: 1
     }, "-=.4")
+    .to('#bio', 1, {
+        opacity: 1
+    }, '-=2')
 
 })
 
