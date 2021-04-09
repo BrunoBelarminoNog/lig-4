@@ -94,7 +94,6 @@ function put_piece(row_selected){
               root.style.setProperty("--background_color_column_indicator", "#e79bfa");
               positionColumn = column
           }
-          console.log(game_table)
           create_table(row_selected, positionColumn);
           break;
       }
@@ -118,7 +117,6 @@ let records = []
      clearInterval(cronometro)
      if(!first_player_turn){
        new_winner.name = namePlayerOne
-       console.log(timer)
        new_winner.time = timer
      }
      else{
