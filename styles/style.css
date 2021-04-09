@@ -227,6 +227,7 @@ main  #bio{
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    opacity: 0;
 }
 
 main #content_game #game_win {
