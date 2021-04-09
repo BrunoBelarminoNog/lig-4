@@ -1,6 +1,7 @@
 const ballInit = document.getElementById('ball_init')
 const containerMain = document.getElementById('content_game');
-const bubbleAudio = document.getElementById('bubble_audio')
+const bubbleAudio = document.getElementById('bubble_audio');
+const loading = document.getElementById('loading')
 
 gsap.to(".load", 3, {
     opacity: 1,
@@ -13,10 +14,10 @@ gsap.to(".load", 3, {
 document.addEventListener('DOMContentLoaded', ()=> {
     const tl = gsap.timeline({delay: 3})
     tl
-    .to('#loading', 1, {
+    .to(loading, 1, {
         opacity: 0,
         onComplete: () => {
-            play()
+            loading.classList.add('hidden');
         }
     })
     .fromTo(ballInit, 4, {
@@ -48,6 +49,3 @@ document.addEventListener('DOMContentLoaded', ()=> {
 
 })
 
-function play() {
-    soundGame.play()
-}
