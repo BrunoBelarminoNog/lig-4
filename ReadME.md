@@ -3,11 +3,10 @@
 </p>
 <br>
 <hr>
-<br>
 
-<h2 align="center">
+<h1 align="center">
   Projeto: LIG 4
-</h2>
+</h1>
 <br>
 
 <blockquote align="center">“Criatividade e inovação só podem florescer quando você abraça a diferença das pessoas.”
