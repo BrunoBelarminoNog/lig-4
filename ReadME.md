@@ -1,68 +1,95 @@
-<em>05 - Entrega: Lig-4 (em equipe)</em>
+<p align="center">
+  <img alt="LIG 4" src="./assets/images/lig4-home.png" />
+</p>
+<br>
+<hr>
+<br>
 
-<h1>Entrega: Lig-4</h1>
+<h2 align="center">
+  Projeto: LIG 4
+</h2>
+<br>
 
-No Lig-4, um jogador assume a cor Vermelha e o outro assume a cor Preta. Os jogadores se alternam inserindo suas peças em uma das 7 colunas de uma <strong>tabela 7x6</strong>. O primeiro jogador que conseguir <strong>quatro</strong> de suas peças em uma linha (seja horizontal, vertical ou diagonal) vence.
+<blockquote align="center">“Criatividade e inovação só podem florescer quando você abraça a diferença das pessoas.”
 
-No mundo físico, a tabela é colocada perpendicular à mesa, de forma que as peças caiam para a parte de baixo e se empilhem umas em cima das outras. Sua versão digital do jogo deve manter esta característica (a animação de queda é opcional).
+(Wenderson Gomes)</blockquote>
+<br>
 
-O jogo pode terminar em empate quando todas as células estiverem preenchidas e nenhum jogador conseguir quatro peças em linha.
 
-![exemplo](./img/example1.gif)
+<p align="center">
 
-Implemente o Lig-4 usando HTML, CSS e JavaScript. Em cada partida, os jogadores estarão usando o mesmo teclado & mouse, alternando seus turnos.
+  <a href="LICENSE">
+    <img alt="LICENSE" src="https://img.shields.io/npm/l/express">
+  </a>
+  <a href="NPM">
+    <img alt="NPM" src="https://img.shields.io/npm/v/npm">
+  </a>
+  <a href="GitHub followers">
+    <img alt="GitHub followers" src="https://img.shields.io/github/followers/BrunoBelarminoNog?style=social">
+  </a>
+</p>
+<hr>
+<br>
+<br>
 
-<h2>Detalhes do Envio</h2>
+# :rocket: Sobre o projeto
 
-Vocês trabalharão <strong>em grupos</strong> para completar sua implementação do Lig-4. Vocês devem codificar individualmente, mas podem trabalhar juntos para construir o layout e a funcionalidade do jogo.
+O LIG-4 é um jogo que tem como objetivo colocar quatro peças numa linha contínua vertical, horizontal ou diagonal. O jogo desenrola-se num tabuleiro de 7x6 e começa com o tabuleiro em branco. 
 
-Como membro de um grupo, você terá que atingir uma certa expectativa de desempenho. Seu desempenho será avaliado pelos outros membros do grupo, então tente contribuir igualmente com o projeto! Você pode ler mais aqui: [Guidelines for Individuals on a Team](https://docs.google.com/document/d/1SmfHAwjDHVRmcXyoF1LsWU5OpOC6ok5L-1sKakPQJjM/edit) (em inglês)
+O ponto alto deste projeto, que foi proposto dentro do curso de Desenvolvimento Full-Stack da Kenzie Academy, foi a oportunidade de trabalhar em grupo, seguindo a metologia SCRUM de gestão e planejamento.
 
-<strong>O líder do projeto fará o envio do mesmo.</strong> Este será um projeto que você colocará em seu portfólio, então faça-o bonito e use a função do GitLab Pages para hospedar o jogo concluído para que qualquer um possa jogar.
+**O LIG-4 é um projeto realizado dentro do curso de desenvolvimento full-stack da Kenzie Academy Brasil.**
 
-<h2>Dicas</h2>
+<br>
 
-Se você não estiver se sentindo seguro de como começar, aqui vão algumas etapas para você ir incrementando:
+## :computer: Tecnologias utilizadas
+A seguinte stack foi utilizada na construção do projeto:
 
-<ol>
-<li>Exiba um disco preto ou vermelho.</li>
-<li>Empilhe discos vermelhos e pretos em uma coluna usando um layout de caixa flex.</li>
-<li>Exiba um tabuleiro completo consistindo de 7 colunas.</li>
-<li>Configure uma função de handler de clique para cada coluna que adiciona um disco.</li>
-<li>Reveze os turnos! Mude a cor do próximo disco após um disco ser adicionado.</li>
-<li>Registre a cor dos discos em cada posição do tabuleiro. Você deve ser capaz de fazer o debug via console.log() depois de cada movimento mostrando o estado do tabuleiro.</li>
-<li>Após encher uma coluna (6 discos), não permita que mais discos sejam adicionados.</li>
-<li>Verifique se o último disco adicionado completou uma linha de quatro peças na coluna (verticalmente).</li>
-<li>Verifique se o último disco adicionado completou uma linha de quatro peças horizontalmente.</li>
-<li>Verifique se o último disco adicionado completou uma linha de quatro peças em uma diagonal descendente ou ascendente.</li>
-</ol>
+- HTML
+- CSS
+- JavaScript
+- Particles.JS
 
-<h2>Exemplo</h2>
+<br>
 
-Aqui está uma captura de tela de uma implementação concluída, mas sem a estilização chique.
+## :construction_worker: Clone!
 
-![exemplo](./img/example.png)
-
-<h2>Envio</h2>
-
-Faça o push e implemente seu código no Gitlab. Adicione grupo <em>ka-br-<sua-turma>-correcoes</em> como membro do seu projeto com a permissão "Reporter", e envie a url do seu gitlab pages (Ex: https://nomedeusuario.gitlab.io/lig-4). <strong>Adicione um comentário ao seu envio informando o nome dos seus colegas.</strong>
-
-<h2>Padronização do Commit</h2>
-
-Iniciar sempre com:
-
-<ul>
-<li>feat:___</li>
-<li>fix:__</li>
-</ul>
-
-<h2>Branchs</h2>
+<br />
 
 ```
-git pull origin develop
+git clone https://github.com/BrunoBelarminoNog/lig-4.git
 ```
-Criar branch específica.
+
+URLs SSH fornecem acesso a um repositório Git via SSH, um protocolo seguro. Se você tiver uma chave SSH registrada em
+sua conta do Github, clone o projeto usando este comando:
 
 ```
-git push origin develop
+git clone git@github.com:BrunoBelarminoNog/lig-4.git
 ```
+
+<br>
+
+
+# :art: Layout
+
+<br />
+<p align="center">
+  <img src="./assets/images/lig4.gif" width="700px"/>
+</p>
+<br />
+
+
+
+# :pushpin: Contribuindo
+
+Sinta-se à vontade para registrar um novo problema com o respectivo título e descrição no repositório Lig-4 . Se você já encontrou uma solução para o problema, eu adoraria revisar sua solicitação de pull!
+
+Verifique a página de contribuição para ver os melhores lugares para registrar problemas, iniciar discussões e começar a contribuir.
+
+
+# :unlock: Licença
+Lançado em 2021. Este projeto está sob a licença do MIT .
+
+Feito com muita dedicação por Bruno Belarmino :zap:
+
+Me siga nas redes! [LinkdIn](https://www.linkedin.com/in/bruno-belarmino-nog/)
